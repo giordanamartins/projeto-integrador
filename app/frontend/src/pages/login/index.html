@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <!-- icons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Login</title>
+</head>
+<body class="font-[inter]">
+    <main class="bg-[#C0C0C0] min-h-screen flex items-center justify-center">
+        <!-- login container -->
+        <section class="bg-[#661B20] flex rounded-2xl shadow-xl/40 max-w-3xl min-h-[400px]">
+            <!-- form -->
+            <div class="sm:w-1/2 px-16 gap-4 p-5 flex flex-col  justify-center">
+                <h2 class="font-bold text-2xl text-white">Acesso ao sistema</h2>
+                <p class="mt-3 text-white">Entre em sua conta</p>
+                <form class="flex flex-col text-white" action="">
+                    <input class="p-2 mt-3 rounded-xl border-[#661B20] text-sm" type="text" name="email" placeholder="E-mail">
+                    <div class="relative">
+                        <input class="p-2 rounded-xl border-[#661B20] w-full text-sm mt-3" type="password" name="password" placeholder="Senha">
+                        <button>
+                            <ion-icon class="absolute top-1/2 right-3 transform -translate-y-3 hover:scale-105 duration-300" name="eye-outline"></ion-icon>
+                        </button>
+                        <button>
+                            <ion-icon class="hidden absolute top-1/2 right-3 transform -translate-y-3 hover:scale-105 duration-300" name="eye-off-outline"></ion-icon>
+                        </button>
+                    </div>
+                    <button class="bg-[#212C4A] rounded-xl  text-white border-[#661B20] py-2 mt-3 hover:scale-105 duration-300">Acessar</button>
+                </form>
+            </div>
+
+            <!-- image -->
+            <div class="hidden sm:flex w-1/2 bg-red-950 rounded-xl p-5 items-center justify-center">
+                <img src="/app/frontend/src/assets/logo-lucca-advocacia.png" alt="Lucca advocacia e assessoria">
+            </div>
+        </section>
+    </main>
+</body>
+</html>
