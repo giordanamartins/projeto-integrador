@@ -37,10 +37,12 @@ Contém a interface do usuário:
 ### 📁 docs/
 Documentação relacionada ao projeto:
 - Documento de requisitos do usuário.
+- Documento referente o modelo conceitual do banco de dados
 
 ---
 
 Feito com 💻 e ☕ por [@giordanamartins](https://github.com/giordanamartins) e [@Everton312](https://github.com/Everton312)
+Respectivas matrículas: 2311100018, 2311100068
 
 
 
