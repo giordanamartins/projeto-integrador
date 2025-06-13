@@ -41,8 +41,14 @@ Documentação relacionada ao projeto:
 
 ---
 
-Feito com 💻 e ☕ por [@giordanamartins](https://github.com/giordanamartins) e [@Everton312](https://github.com/Everton312)
-Respectivas matrículas: 2311100018, 2311100068
+### 👥 Desenvolvedores
+
+Feito com 💻 e ☕ por:
+
+- **Giordana Martins** – Matrícula: 2311100018 – [@giordanamartins](https://github.com/giordanamartins)  
+- **Everton Althaus** – Matrícula: 2311100068 – [@Everton312](https://github.com/Everton312)
+
+---
 
 
 
