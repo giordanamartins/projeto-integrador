@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Contas a Receber</title>
+</head>
+<body class="font-[inter] bg-[#222222] ">
+    <div class="sidebar fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
+        <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
+            <img src="assets/lucca.png" alt="logo" class="w-10 h-11 mr-3"> <div class="user flex-col text-white left-3">
+                <h1 class="font-bold">User</h1>
+                <p class="font-light text-sm">Cargo</p>
+            </div>
+        </div>
+
+        <ul class="text-white mt-8">
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-home-line mr-3"></i> <span>Home</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-auction-line mr-3"></i>
+                    <span>Processos</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-group-line mr-3"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-coins-line mr-3"></i>
+                    <span>Financeiro</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-calendar-2-line mr-3"></i>
+                    <span>Agenda</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-file-chart-line mr-3"></i>
+                    <span>Relatórios</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
+        <div class="botoes py-2 px-3 flex-col justify-center items-center">
+            <div id="bt_add" class="flex justify-center">
+                <button class="px-10 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold">+ Incluir Conta</button>
+            </div>
+            <div id="bt_del" class="flex justify-center mt-2.5">
+                <button class="flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] text-white font-bold">
+                    <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
+                </button>
+            </div>
+            <div id="bt_ok" class="flex justify-center mt-2.5">
+                <button class="flex items-center px-13 py-3 bg-[#15803d]  flex rounded-full text-[19px] text-white font-bold">
+                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
+                </button>
+            </div>
+        </div>
+
+         <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
+            
+            <span class="p-1"></span>
+        </div>
+        <div class="mt-20 registros font-bold text-center">
+            <span class="text-red-500">Quantidade de contas: </span>
+            <div id="qtdReg" class="text-white">
+            </div>
+        </div>
+    </div>
+
+    <div class="content ml-84  min-h-screen p-4 ">
+        <div class="headercontent flex flex-wrap px-20 pt-10 mr-20">
+            <span class=" font-bold text-white text-[35px] ">Contas a receber</span>
+            <div class="w=64 flex-auto"></div>
+           
+        </div>
+        <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
+            <ion-icon name="search-outline" class="px-3"></ion-icon>
+            <input type="text" class="w-full">
+        </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/index.js"></script>
+
+</body>
+</html>
