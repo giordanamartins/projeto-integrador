@@ -1,66 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="PT-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-  />
-  </head>
-<body class="font-[inter]">
-    <div class="fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Início</title>
+    <style>
+        /* Adicionando a fonte Inter como padrão */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#222222]">
+
+    <div class="sidebar fixed left-0 top-0 w-64 h-full bg-red-950 p-4 sm:hidden lg:block">
         <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
-            <img src="assets/lucca.png" alt="logo" class="w-10 h-11 mr-3">
-            <div class="user flex-col text-white left-3">
-              <h1 class="font-bold">User</h1>
-              <p class="font-light text-sm">Cargo</p>
+            <img src="assets/lucca.png" alt="logo" class="w-10 h-11 mr-3"> <div class="user flex-col text-white left-3">
+                <h1 class="font-bold">User</h1>
+                <p class="font-light text-sm">Cargo</p>
             </div>
         </div>
 
         <ul class="text-white mt-8">
-          <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-              <i class="ri-home-line mr-3"></i>
-              <span>Home</span>
-            </a>
-          </li>
-          <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-              <i class="ri-auction-line mr-3"></i>
-              <span>Processos</span>
-            </a>
-          </li>
-          <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-              <i class="ri-group-line mr-3"></i>
-              <span>Clientes</span>
-            </a>
-          </li>
-          <li class="mb-8 group">
-            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-              <i class="ri-coins-line mr-3"></i>
-              <span>Financeiro</span>
-            </a>
-          </li>
-          <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-              <i class="ri-calendar-2-line mr-3"></i>
-              <span>Agenda</span>
-            </a>
-          </li>
-          <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-              <i class="ri-file-chart-line mr-3"></i>
-              <span>Relatórios</span>
-            </a>
-          </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-home-line mr-3"></i> <span>Home</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-auction-line mr-3"></i>
+                    <span>Processos</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-group-line mr-3"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-coins-line mr-3"></i>
+                    <span>Financeiro</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-calendar-2-line mr-3"></i>
+                    <span>Agenda</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-file-chart-line mr-3"></i>
+                    <span>Relatórios</span>
+                </a>
+            </li>
         </ul>
-        
     </div>
 
+    <main class="lg:ml-64 p-10">
+        <header class="px-20 mt-10 text-white font-bold">
+            <div>
+                <span class="text-4xl">Início</span>
+            </div>
+            <div class="mt-8">
+                <span class="text-2xl">Resumo diário</span>
+            </div>
+        </header>
+
+        <div class="blocos grid grid-cols-1 lg:grid-cols-3 gap-4 mt-6 px-20">
+            <div class="bloco_1 h-64 lg:h-[20rem] rounded-lg bg-[#3f3f46] flex text-white text-xl lg:col-span-2">
+                <div class="w-full grid grid-cols-4 grid-rows-[5rem_14rem] gap-3 justify-center">
+                    <span class="col-span-4 h-1 p-5 text-[35px] font-bold flex justify-center">Processos</span> 
 
 
-  </body>
+                    <div class="aberto inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
+                        <div class="flex items-center gap-2 justify-center mt-9">
+                            <div class="circulo  w-5 h-5 rounded-full bg-[#fde047] border-4 border-[#fbbf24]"></div>
+                            <span class="">Em aberto</span>
+                        </div> 
+                        <span class="text-[50px] font-bold flex justify-center mt-5">00</span>
+                    </div>
+
+                   <div class="andamento inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
+                        <div class="flex items-center gap-2 justify-center mt-9">
+                            <div class="circulo  w-5 h-5 rounded-full bg-[#1d4ed8] border-4 border-[#172554]"></div>
+                            <span class="">Em andamento</span>
+                        </div> 
+                        <span class="text-[50px] font-bold flex justify-center mt-5">00</span>
+                    </div>
+
+                    <div class="concluido inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
+                        <div class="flex items-center gap-2 justify-center mt-9">
+                            <div class="circulo  w-5 h-5 rounded-full bg-[#15803d] border-4 border-[#14532d]"></div>
+                            <span class="">Concluído</span>
+                        </div> 
+                        <span class="text-[50px] font-bold flex justify-center mt-5">00</span>
+                    </div>
+
+                    <div class="cancelado inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
+                        <div class="flex items-center gap-2 justify-center mt-9">
+                            <div class="circulo  w-5 h-5 rounded-full bg-[#b91c1c] border-4 border-[#7f1d1d]"></div>
+                            <span class="">Cancelado</span>
+                        </div> 
+                        <span class="text-[50px] font-bold flex justify-center mt-5">00</span>
+                    </div>
+                    
+                </div>
+                
+            </div>
+
+
+            <div class="bloco_3 bg-[#3f3f46]  lg:h-[40rem] rounded-lg text-white text-xl lg:row-span-2">
+                <div class="grid grid-rows-[5rem_33rem] rounded-lg m-4">
+                    <span class="header text-[35px] flex justify-center">
+                        Tarefas
+                    </span>
+                    <div class="grid gap-3 w-full grid-rows-[1fr_fr]">
+                        <div class="bg-[#18181b] h-[16rem] rounded-lg ">
+                            <span class="flex justify-center mt-10 text-[90px] text-red-500 font-bold">0</span>
+                            <span class="text-white flex justify-center font-bold text-[40px]">Tarefas Hoje</span>
+                        </div>
+                        <div class="bg-[#18181b] rounded-lg h-[16rem]">
+                            <div id="tarefas" class="p-3">
+                                <div class="py-2 inline-flex items-center gap-3">
+                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
+                                    <span class="font-bold">00:00</span>
+                                    <span class="">Tarefa Exemplo</span>
+                                </div>
+                                <div class="py-2 inline-flex items-center gap-3">
+                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
+                                    <span class="font-bold">00:00</span>
+                                    <span class="">Tarefa Exemplo</span>
+                                </div>
+                                <div class="py-2 inline-flex items-center gap-3">
+                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
+                                    <span class="font-bold">00:00</span>
+                                    <span class="">Tarefa Exemplo</span>
+                                </div>
+                                <div class="py-2 inline-flex items-center gap-3">
+                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
+                                    <span class="font-bold">00:00</span>
+                                    <span class="">Tarefa Exemplo</span>
+                                </div>
+                                <div class="py-2 inline-flex items-center gap-3">
+                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
+                                    <span class="font-bold">00:00</span>
+                                    <span class="">Tarefa Exemplo</span>
+                                </div>
+                                
+                            </div>
+                            
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            
+                
+            </div>
+
+
+
+            <div class="bloco_2 bg-[#3f3f46] h-64 lg:h-[19rem] rounded-lg  text-white text-xl lg:col-span-2">
+                <div class="w-full grid grid-cols-2 grid-rows-[5rem_13rem] gap-3 justify-center">
+                    <span class="col-span-2 h-1 p-5 text-[35px] font-bold flex justify-center">Financeiro</span>
+
+                    <div class="pagar inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
+                        <div class="flex items-center m-4">
+                            <div class="circulo  w-5 h-5 rounded-full bg-[#b91c1c] border-4 border-[#7f1d1d]"></div>
+                            <h5 id="qtdPag" class="ml-1 text-red-500 font-bold">0</h5>
+                            <span class="m-1 ml-2">Contas a Pagar</span>
+                        </div>
+                        <div class="totais flex justify-center font-bold text-[45px]">
+                            <span class="text-white ">R$</span>
+                            <span class="text-red-500 ml-2">00,00</span>
+                        </div>    
+                    </div>
+
+                    <div class="receber inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
+                        <div class="flex items-center m-4">
+                            <div class="circulo  w-5 h-5 rounded-full bg-[#15803d] border-4 border-[#14532d]"></div>
+                            <h5 id="qtdPag" class="ml-1 text-[#16a34a] font-bold">0</h5>
+                            <span class="m-1 ml-2">Contas a Receber</span>
+                        </div>
+                        <div class="totais flex justify-center font-bold text-[45px]">
+                            <span class="text-white ">R$</span>
+                            <span class="text-[#16a34a] ml-2">00,00</span>
+                        </div>    
+                    </div>
+
+
+            </div>
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
 </html>
