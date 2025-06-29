@@ -37,7 +37,8 @@ Contém a interface do usuário:
 ### 📁 docs/
 Documentação relacionada ao projeto:
 - Documento de requisitos do usuário.
-- Documento referente o modelo conceitual do banco de dados
+- Documento referente o modelo conceitual do banco de dados.
+- Documento referente o modelo relacional do banco de dados.
 
 ---
 
