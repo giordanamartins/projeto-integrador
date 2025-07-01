@@ -12,7 +12,19 @@ const getContasPagar = async (req, res) => {
   }
 };
 
+const getContasPagarHoje = async (req, res) => {
+  try{
+    const query_cpagar = 'SELECT cp.totalp FROM contasPagar cp WHERE datavencp = CURRENT_DATE;';
+    const { rows } = await db.query(query_cpagar);
+    res.status(200).json(rows);
+  }catch (error) {
+        console.error('Erro ao buscar contas a pagar do dia:', error);
+        res.status(500).json({ message: "Erro interno do servidor." });
+    }
+};
+
 
 module.exports = {
-  getContasPagar
+  getContasPagar,
+  getContasPagarHoje
 };

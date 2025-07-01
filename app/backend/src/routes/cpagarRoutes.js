@@ -6,6 +6,7 @@ const cpagarController = require('../controllers/cpagarController');
 
 
 router.get('/', cpagarController.getContasPagar);
+router.get('/hoje', cpagarController.getContasPagarHoje);
 
 
 module.exports = router;
