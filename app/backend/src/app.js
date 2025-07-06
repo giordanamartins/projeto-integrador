@@ -18,6 +18,7 @@ const cpagarRoutes = require('./routes/cpagarRoutes');
 const creceberRoutes = require('./routes/creceberRoutes');
 const processosRoutes = require('./routes/processosRoutes');
 const tarefasRoutes = require('./routes/tarefasRoutes');
+const usuarioRoutes = require('./routes/usuarioRoutes');
 const authRoutes = require('./routes/authRoutes');
 const isAuthenticated = require('./middleware/authMiddleware');
 
