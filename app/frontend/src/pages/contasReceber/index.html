@@ -7,12 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
-<body class="font-[inter] bg-[#C0C0C0] text-black p-6">
+<body class="font-[inter] bg-[#222222] text-white p-6">
 
 <!-- sidebar -->
 <div class="fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
     <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
-        <img src="../assets/lucca.png" alt="logo" class="w-10 h-11 mr-3">
+        <img src="/app/frontend/src/assets/lucca.png" alt="logo" class="w-10 h-11 mr-3">
         <div class="user flex-col text-white left-3">
         <h1 class="font-bold">User</h1>
         <p class="font-light text-sm">Cargo</p>
@@ -61,19 +61,19 @@
 
 <!-- form -->
 <div class="ml-64 p-6">
-    <form class="bg-white p-6 rounded-xl shadow-lg max-w-6xl mx-auto space-y-6">
+    <form class="text-white bg-[#3f3f46] p-6 rounded-xl shadow-lg max-w-6xl mx-auto space-y-6">
     <h1 class="text-2xl font-bold mb-4">Contas a Receber</h1>
 
     <div class="space-y-4">
         <div class="flex flex-wrap gap-4">
             <div class="flex flex-col w-24">
             <label class="mb-1">Código</label>
-            <input type="text" class="p-2 rounded bg-gray-300 text-black" readonly />
+            <input type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
         </div>
 
         <div class="flex flex-col w-full md:w-1/3">
             <label class="mb-1">Tipo*</label>
-            <select class="p-2 rounded bg-gray-200 text-black">
+            <select class="p-2 rounded bg-[#222222] text-white">
                 <option value="receber">Conta a Receber</option>
                 <option value="pagar">Conta a Pagar</option>
             </select>
@@ -82,24 +82,24 @@
 
         <div class="flex flex-col w-full md:w-1/3">
             <label class="mb-1">Valor*</label>
-            <input type="number" step="0.01" class="p-2 rounded bg-gray-200 text-black" placeholder="R$ 0,00" />
+            <input type="number" step="0.01" class="p-2 rounded bg-[#222222] text-white" placeholder="R$ 0,00" />
         </div>
 
         <div class="flex flex-col w-full md:w-1/3">
             <label class="mb-1">Cliente</label>
-            <select class="p-2 rounded bg-gray-200 text-black">
+            <select class="p-2 rounded bg-[#222222] text-white">
                 <!-- pendente integração front-back -->
             </select>
         </div>
 
         <div class="flex flex-col w-full md:w-1/3">
             <label class="mb-1">Data de Vencimento*</label>
-            <input type="date" class="p-2 rounded bg-gray-200 text-black" />
+            <input type="date" class="p-2 rounded bg-[#222222] text-white" />
         </div>
 
         <div class="flex flex-col">
             <label class="mb-1">Recorrência</label>
-                <select class="p-2 rounded bg-gray-200 text-black">
+                <select class="p-2 rounded bg-[#222222] text-white">
                     <option value="">Nenhuma</option>
                     <option value="mensal">Mensal</option>
                     <option value="anual">Anual</option>
@@ -108,28 +108,28 @@
 
         <div class="flex flex-col w-full md:w-1/3">
             <label class="mb-1">Categoria*</label>
-            <select class="p-2 rounded bg-gray-200 text-black">
+            <select class="p-2 rounded bg-[#222222] text-white">
                 <!-- pendente integração front-back -->
             </select>
         </div>
 
         <div class="flex flex-col w-full md:w-1/2">
             <label class="mb-1">Processo Vinculado*</label>
-            <select class="p-2 rounded bg-gray-200 text-black">
+            <select class="p-2 rounded bg-[#222222] text-white">
                 <!-- pendente integração front-back -->
             </select>
         </div>
 
         <div class="flex flex-col w-full">
             <label class="mb-1">Descrição/Comentário</label>
-            <textarea rows="3" class="p-2 rounded bg-gray-200 text-black resize-none" placeholder="Adicione uma descrição para o lançamento..."></textarea>
+            <textarea rows="3" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Adicione uma descrição para o lançamento..."></textarea>
         </div>
         </div>
     </div>
 
     <div class="flex flex-wrap gap-4">
         <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
-        <button type="button" class="border px-6 py-2 rounded text-black hover:bg-gray-300">Cancelar</button>
+        <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]">Cancelar</button>
     </div>
     </form>
 </div>
