@@ -1,13 +1,24 @@
+require('dotenv').config();
 const express = require("express");
 const cors = require('cors');
 const path = require('path');
-require('dotenv').config();
+const session = require("express-session");
+const passport = require("passport");
+const db = require('./config/db');
+
+
+//autenticacao
+const initializePassport = require('./config/passport-cfg');
+initializePassport(passport);
 
 // O require das rotas vem primeiro
 const clienteRoutes = require('./routes/clienteRoutes');
 const cpagarRoutes = require('./routes/cpagarRoutes');
 const creceberRoutes = require('./routes/creceberRoutes');
-console.log("1. [App] Conteúdo importado de creceberRoutes:", creceberRoutes);
+const usuarioRoutes = require('./routes/usuarioRoutes');
+const authRoutes = require('./routes/authRoutes');
+const isAuthenticated = require('./middleware/authMiddleware');
+
 
 const app = express();
 
@@ -15,17 +26,59 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 //1 dia!!
+  }
+}));
+
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+app.get('/', async (req, res) => {
+  try {
+    const userCheck = await db.query('SELECT COUNT(*) AS user_count FROM usuarios');
+    const userCount = parseInt(userCheck.rows[0].user_count, 10);
+
+    if (userCount === 0) {
+
+      return res.redirect('/usuarios/index.html');
+    }
+
+    if (req.isAuthenticated()) {
+      res.redirect('/home/index.html');
+    } else {
+      res.redirect('/login/index.html');
+    }
+
+  } catch (error) {
+    console.error("Erro na verificação do primeiro usuário:", error);
+    res.status(500).send("Ocorreu um erro ao iniciar a aplicação.");
+  }
+});
+
+
+app.get('/home/index.html', isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, '..', '..', 'frontend', 'src', 'pages', 'home', 'index.html'));
+});
+
+app.use('/api/auth', authRoutes);
+
 // Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'src', 'pages')));
 
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/contasPagar', cpagarRoutes);
 app.use('/api/contasReceber', creceberRoutes);
-
-app.get('/', (req, res) => {
-  // Redireciona o usuário para a sua página home existente
-  res.redirect('/home/index.html');
-});
+app.use('/api/usuarios', usuarioRoutes);
 
 
 
