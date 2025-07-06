@@ -7,12 +7,12 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
-<body class="font-[inter] bg-[#C0C0C0] text-black p-6">
+<body class="font-[inter] bg-[#222222] text-white p-6">
 
 <!-- sidebar -->
 <div class="fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
     <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
-        <img src="../assets/lucca.png" alt="logo" class="w-10 h-11 mr-3">
+        <img src="/app/frontend/src/assets/lucca.png" alt="logo" class="w-10 h-11 mr-3">
         <div class="user flex-col text-white left-3">
         <h1 class="font-bold">User</h1>
         <p class="font-light text-sm">Cargo</p>
@@ -61,30 +61,30 @@
 
 <!-- form -->
 <div class="ml-64 p-6">
-  <form class="bg-white p-6 rounded-xl shadow-lg max-w-5xl mx-auto space-y-6">
+  <form class="bg-[#3f3f46] text-white p-6 rounded-xl shadow-lg max-w-5xl mx-auto space-y-6">
     <h1 class="text-2xl font-bold mb-4">Contas a Pagar</h1>
 
     <div class="flex flex-wrap gap-x-4 gap-y-4">
         <div class="flex flex-col w-24">
             <label class="mb-1">Código</label>
-            <input type="text" class="p-2 rounded bg-gray-300 text-black" readonly />
+            <input type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
         </div>
 
         <div class="flex flex-col flex-1 min-w-[200px]">
             <label class="mb-1">Valor*</label>
-            <input type="number" step="0.01" placeholder="R$ 0,00" class="p-2 rounded bg-gray-200 text-black" required />
+            <input type="number" step="0.01" placeholder="R$ 0,00" class="p-2 rounded bg-[#222222] text-white" required />
         </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="flex flex-col">
             <label class="mb-1">Data de Vencimento*</label>
-            <input type="date" class="p-2 rounded bg-gray-200 text-black" required />
+            <input type="date" class="p-2 rounded bg-[#222222] text-white" required />
         </div>
 
         <div class="flex flex-col">
             <label class="mb-1">Categoria*</label>
-            <select class="p-2 rounded bg-gray-200 text-black" required>
+            <select class="p-2 rounded bg-[#222222] text-white" required>
             <!-- pendente integração front-back -->
             </select>
         </div>
@@ -92,12 +92,12 @@
 
     <div class="flex flex-col">
         <label class="mb-1">Descrição</label>
-        <textarea rows="3" class="p-2 rounded bg-gray-200 text-black resize-none" placeholder="Adicione uma descrição opcional..."></textarea>
+        <textarea rows="3" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Adicione uma descrição opcional..."></textarea>
     </div>
 
     <div class="flex gap-4">
         <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
-        <button type="button" class="border px-6 py-2 rounded text-black hover:bg-gray-300">Cancelar</button>
+        <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]">Cancelar</button>
     </div>
 </form>
 </div>
