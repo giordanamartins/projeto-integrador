@@ -9,6 +9,8 @@ router.get('/', clienteController.getClientes);
 
 router.post('/', clienteController.createClientes);
 
+router.put('/:id' , clienteController.updateClientes);
+
 router.delete('/' , clienteController.deleteClientes);
 
 // Certifique-se que esta é a única linha de exportação no arquivo
