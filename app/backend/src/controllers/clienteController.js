@@ -3,7 +3,7 @@ const validator = require('validator');
 
 const getClientes = async (req, res) => {
   try {
-    const query_clientes = 'SELECT * FROM clientes ORDER BY idc ASC';
+    const query_clientes = 'SELECT * FROM clientes ORDER BY codigo ASC';
     const { rows } = await db.query(query_clientes);
     res.status(200).json(rows);
 
@@ -40,7 +40,6 @@ function validarDadosCliente(dados) {
   return { ok: true };
 }
 
-
 const createClientes = async (req, res) => {
   const { nome, cpf_cnpj, email, data_nascimento, comentario, tipo_pessoa, telefone1, telefone2, endereco_logradouro, endereco_numero, endereco_complemento, endereco_bairro, endereco_cidade, endereco_uf, endereco_cep} = req.body;
 
@@ -69,7 +68,7 @@ const createClientes = async (req, res) => {
 const updateClientes = async (req,res) => {
   const {id} = req.params;
 
-  const clienteExiste = await db.oneOrNone("SELECT id FROM clientes WHERE id = $1", [id]);
+  const clienteExiste = await db.oneOrNone("SELECT id FROM clientes WHERE codigo = $1", [id]);
     if (!clienteExiste) {
       return res.status(404).send({ error: 'Cliente não encontrado.' });
     }
@@ -81,7 +80,6 @@ const updateClientes = async (req,res) => {
     if (!resultadoValidacao.ok) {
       return res.status(400).send({ error: resultadoValidacao.error });
     }
-
 
     await db.none(
       "UPDATE clientes SET nome = $1, cpf_cnpj = $2, email = $3, data_nascimento = $4, comentario = $5, tipo_pessoa = $6, telefone1 = $7, telefone2 = $8, endereco_logradouro = $9, endereco_numero = $10, endereco_complemento = $11, endereco_bairro = $12, endereco_cidade = $13, endereco_uf = $14, endereco_cep = $15 WHERE id = $16;"
@@ -105,14 +103,13 @@ const deleteClientes = async (req, res) => {
     }
   const idInt = ids.map(id => parseInt(id, 10));
 
-
   //converte o array para inteiro, para poder tirar do banco
     console.log("Array convertido para inteiros:", idInt);
 
   try {
     // Query SQL para deletar múltiplos registros usando ANY.
-    // Ele deletará todas as linhas onde 'idc' for igual a qualquer valor no array $1.
-    const queryText = 'DELETE FROM clientes WHERE idc = ANY($1::int[])';
+    // Ele deletará todas as linhas onde 'codigo' for igual a qualquer valor no array $1.
+    const queryText = 'DELETE FROM clientes WHERE codigo = ANY($1::int[])';
     
     const result = await db.query(queryText, [idInt]);
 
@@ -129,7 +126,6 @@ const deleteClientes = async (req, res) => {
       res.status(500).json({ message: 'Erro interno do servidor.' });
     }
 };
-
 
 module.exports = {
   getClientes,
