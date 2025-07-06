@@ -6,27 +6,26 @@ const session = require("express-session");
 const passport = require("passport");
 const db = require('./config/db');
 
-
 //autenticacao
 const initializePassport = require('./config/passport-cfg');
 initializePassport(passport);
 
 // O require das rotas vem primeiro
+const catDespesaRoutes = require('./routes/catDespesaRoutes');
+const catProcessosRoutes = require('./routes/catProcessoRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
 const cpagarRoutes = require('./routes/cpagarRoutes');
 const creceberRoutes = require('./routes/creceberRoutes');
-const usuarioRoutes = require('./routes/usuarioRoutes');
+const processosRoutes = require('./routes/processosRoutes');
+const tarefasRoutes = require('./routes/tarefasRoutes');
 const authRoutes = require('./routes/authRoutes');
 const isAuthenticated = require('./middleware/authMiddleware');
-
 
 const app = express();
 
 // Middlewares
 app.use(cors());
 app.use(express.json());
-
-
 
 app.use(session({
   secret: process.env.SESSION_SECRET,
@@ -36,12 +35,8 @@ app.use(session({
   }
 }));
 
-
-
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 app.get('/', async (req, res) => {
   try {
@@ -75,12 +70,14 @@ app.use('/api/auth', authRoutes);
 // Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'src', 'pages')));
 
+app.use('/api/catDespesas', catDespesaRoutes);
+app.use('/api/catProcessos', catProcessosRoutes);
 app.use('/api/clientes', clienteRoutes);
 app.use('/api/contasPagar', cpagarRoutes);
 app.use('/api/contasReceber', creceberRoutes);
+app.use('/api/processos', processosRoutes);
+app.use('/api/tarefas', tarefasRoutes);
 app.use('/api/usuarios', usuarioRoutes);
-
-
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;
