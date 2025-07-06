@@ -67,15 +67,15 @@ const createClientes = async (req, res) => {
 }
 
 const updateClientes = async (req,res) => {
-  try{
-    const {id} = req.params;
+  const {id} = req.params;
 
-    const { nome, cpf_cnpj, email, data_nascimento, comentario, tipo_pessoa, telefone1, telefone2, endereco_logradouro, endereco_numero, endereco_complemento, endereco_bairro, endereco_cidade, endereco_uf, endereco_cep} = req.body;
-
-    const clienteExiste = await db.oneOrNone("SELECT id FROM clientes WHERE id = $1", [id]);
+  const clienteExiste = await db.oneOrNone("SELECT id FROM clientes WHERE id = $1", [id]);
     if (!clienteExiste) {
       return res.status(404).send({ error: 'Cliente não encontrado.' });
     }
+
+  try{
+    const { nome, cpf_cnpj, email, data_nascimento, comentario, tipo_pessoa, telefone1, telefone2, endereco_logradouro, endereco_numero, endereco_complemento, endereco_bairro, endereco_cidade, endereco_uf, endereco_cep} = req.body;
 
     const resultadoValidacao = validarDadosCliente(req.body);
     if (!resultadoValidacao.ok) {
@@ -99,7 +99,6 @@ const updateClientes = async (req,res) => {
 
 const deleteClientes = async (req, res) => {
   const {ids} = req.body;
-
 
   if (!ids || ids.length === 0) {
         return res.status(400).json({ message: 'Nenhum ID de cliente foi fornecido para exclusão.' });
