@@ -3,7 +3,7 @@ const db = require('../config/db');
 
 const getContasReceber = async (req, res) => {
   try {
-    const query_creceber = 'SELECT cl.nome, cr.descricao, data_vencimento, valor FROM a_receber cr JOIN clientes cl on cr.cliente_codigo = cl.codigo;';
+    const query_creceber = 'SELECT cl.nome, cr.descricao, cr.data_vencimento, cr.valor FROM a_receber cr JOIN clientes cl on cr.cliente_codigo = cl.codigo;';
     const { rows } = await db.query(query_creceber);
     res.status(200).json(rows);
 
@@ -32,7 +32,7 @@ const createContasReceber = async (req, res) => {
 
     const { rows } = await db.query(queryText, values);
           
-            res.status(201).json({ message: 'Contas a receber criado com sucesso!', cliente: rows[0] });
+            res.status(201).json({ message: 'Contas a receber criado com sucesso!', creceber: rows[0] });
   }
   catch(err){
       console.error('Erro ao inserir contas a receber:', error);
