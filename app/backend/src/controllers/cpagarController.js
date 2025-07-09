@@ -1,5 +1,4 @@
 const db = require('../config/db');
-const db = require('../config/db');
 
 const getContasPagar = async (req, res) => {
   try {

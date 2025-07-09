@@ -40,11 +40,26 @@
                     <span>Clientes</span>
                 </a>
             </li>
-            <li class="mb-8 group">
-                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-coins-line mr-3"></i>
-                    <span>Financeiro</span>
+            <li class="mb-4 group">
+               
+                <a href="#" id="financeiro-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <div class="flex items-center">
+                        <i class="ri-coins-line mr-3 text-lg"></i>
+                        <span>Financeiro</span>
+                    </div>
+                    <i id="financeiro-arrow" class="ri-arrow-down-s-line"></i>
                 </a>
+                
+                
+                <ul id="financeiro-submenu" class="pl-8 mt-2 hidden">
+                    <li class="mb-2">
+                        
+                        <a href="../contasPagar/contas_pagar.html" class="text-gray-400 hover:text-white">Contas a Pagar</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
+                    </li>
+                </ul>
             </li>
             <li class="mb-8 group">
                 <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
@@ -64,7 +79,10 @@
      <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
        <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div id="bt_add" class="flex justify-center">
-                <button class="px-8 py-3.5 bg-[#2563eb] rounded-full text-[17px] text-white font-bold">+ Incluir Processo</button>
+                <a href="index.html">
+                    <button class="cursor-pointer px-8 py-3.5 bg-[#2563eb] rounded-full text-[17px] text-white font-bold">+ Incluir Processo</button>
+                </a>
+                
             </div>
             <div id="bt_del" class="flex justify-center mt-2.5">
                 <button class="flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] text-white font-bold">

@@ -38,12 +38,27 @@
                 <span>Clientes</span>
             </a>
         </li>
-        <li class="mb-8 group">
-            <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                <i class="ri-coins-line mr-3"></i>
-                <span>Financeiro</span>
+        <li class="mb-4 group">
+               
+            <a href="#" id="financeiro-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
+                <div class="flex items-center">
+                    <i class="ri-coins-line mr-3 text-lg"></i>
+                    <span>Financeiro</span>
+                </div>
+                <i id="financeiro-arrow" class="ri-arrow-down-s-line"></i>
             </a>
-        </li>
+            
+            
+            <ul id="financeiro-submenu" class="pl-8 mt-2 hidden">
+                <li class="mb-2">
+                    
+                    <a href="../contasPagar/contas_pagar.html" class="text-gray-400 hover:text-white">Contas a Pagar</a>
+                </li>
+                <li class="mb-2">
+                    <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
+                </li>
+            </ul>
+            </li>
         <li class="mb-8 group">
             <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
                 <i class="ri-calendar-2-line mr-3"></i>

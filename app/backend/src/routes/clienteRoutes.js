@@ -7,6 +7,8 @@ const clienteController = require('../controllers/clienteController');
 // A rota usa a função importada
 router.get('/', clienteController.getClientes);
 
+router.get('/:id', clienteController.getClienteById);
+
 router.post('/', clienteController.createClientes);
 
 router.put('/:id' , clienteController.updateClientes);

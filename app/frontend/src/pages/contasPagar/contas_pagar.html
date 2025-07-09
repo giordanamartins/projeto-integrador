@@ -37,11 +37,29 @@
                     <span>Clientes</span>
                 </a>
             </li>
-            <li class="mb-8 group">
-                <a href="#" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-coins-line mr-3"></i>
-                    <span>Financeiro</span>
+            <li class="mb-4 group">
+               
+                <a href="#" id="financeiro-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <div class="flex items-center">
+                        <i class="ri-coins-line mr-3 text-lg"></i>
+                        <span>Financeiro</span>
+                    </div>
+                    <i id="financeiro-arrow" class="ri-arrow-down-s-line"></i>
                 </a>
+                
+                
+                <ul id="financeiro-submenu" class="pl-8 mt-2 hidden">
+                    <li class="mb-2">
+                        
+                        <a href="../contasPagar/contas_pagar.html" class="text-gray-400 hover:text-white">Contas a Pagar</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="../categoriaDespesas/categorias_desp.html" class="text-gray-400 hover:text-white">Categorias de Despesas</a>
+                    </li>
+                </ul>
             </li>
             <li class="mb-8 group">
                 <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
@@ -70,7 +88,7 @@
             </div>
             <div id="bt_ok" class="flex justify-center mt-2.5">
                 <button class="flex items-center px-13 py-3 bg-[#15803d]  flex rounded-full text-[19px] text-white font-bold">
-                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
+                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Baixar
                 </button>
             </div>
         </div>

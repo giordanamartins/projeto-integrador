@@ -1,5 +1,20 @@
 document.addEventListener('DOMContentLoaded', () => {
     dataLoad();
+    const financeiroToggle = document.getElementById('financeiro-toggle');
+    const financeiroSubmenu = document.getElementById('financeiro-submenu');
+    const financeiroArrow = document.getElementById('financeiro-arrow');
+    if (financeiroToggle) {
+        financeiroToggle.addEventListener('click', (event) => {
+            // Impede o comportamento padrão do link (que seria navegar para '#')
+            event.preventDefault();
+
+            // Alterna a classe 'hidden' no submenu, fazendo-o aparecer ou desaparecer
+            financeiroSubmenu.classList.toggle('hidden');
+
+            // Alterna a classe 'rotate-180' no ícone da seta para girá-lo
+            financeiroArrow.classList.toggle('rotate-180');
+        });
+    }
 });
 
 
@@ -8,6 +23,7 @@ const dataLoad = async () => {
     const qtdRec = document.getElementById('qtdRec');
     const totPag = document.getElementById('totPag');
     const qtdPag = document.getElementById('qtdPag');
+    
 
     if (!totRec) {
         console.error('Erro: Elemento com id "totRec" não foi encontrado no HTML.');
