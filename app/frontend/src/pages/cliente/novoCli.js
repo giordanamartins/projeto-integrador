@@ -17,9 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 const apiUrl = '/api/clientes';
 const form = document.getElementById('form_cliente');
-
+if (!form) {
+    console.error('ERRO CRÍTICO: Formulário com id="form_cliente" não foi encontrado. Verifique seu HTML.');
+}
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
+
+
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = 'Salvando...';
+
+
+
     const nome = document.getElementById('nome').value;
     const cpf_cnpj = document.getElementById('cpf_cnpj').value;
     const email = document.getElementById('email').value;
@@ -58,6 +69,7 @@ form.addEventListener('submit', async (event) => {
     try {
 
         const response = await axios.post(apiUrl , novoCliente);
+        alert(response.data.message);
         
         
         form.reset();
@@ -68,7 +80,15 @@ form.addEventListener('submit', async (event) => {
         }, 2000);
 
     } catch (error) {
-        console.error('Erro ao criar cliente:', error);
-        alert('Falha ao criar cliente. Verifique o console.');
+       if (error.response && error.response.data && error.response.data.error) {
+                alert(`Erro de Validação: ${error.response.data.error}`);
+            } else {
+                alert('Falha ao criar cliente. Verifique o console.');
+            }
+            console.error('Erro ao criar cliente:', error);
+
+            // Reabilita o botão apenas em caso de erro
+            submitButton.disabled = false;
+            submitButton.textContent = 'Salvar';
     }
 });

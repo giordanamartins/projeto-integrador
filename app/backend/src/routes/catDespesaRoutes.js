@@ -7,7 +7,11 @@ const catDespesaController = require('../controllers/catDespesaController');
 // A rota usa a função importada
 router.get('/', catDespesaController.getCatDespesa);
 
+router.get('/:id', catDespesaController.getCatById);
+
 router.post('/', catDespesaController.createCatDespesa);
+
+router.post('/:id/clone', catDespesaController.cloneCatDespesa);
 
 router.put('/:id' , catDespesaController.updateCatDespesa);
 

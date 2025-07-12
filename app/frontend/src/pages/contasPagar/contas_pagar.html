@@ -79,16 +79,23 @@
      <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
         <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div id="bt_add" class="flex justify-center">
-                <button class="px-10 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold">+ Incluir Conta</button>
+                <a href="index.html">
+                    <button class="cursor-pointer px-10 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold">+ Incluir Conta</button>
+                </a>
             </div>
-            <div id="bt_del" class="flex justify-center mt-2.5">
-                <button class="flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] text-white font-bold">
+            <div  class="flex justify-center mt-2.5">
+                <button id="bt_del" class="flex items-center bg-[#942023] px-16 py-3   rounded-full text-[19px] text-white font-bold">
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
                 </button>
             </div>
-            <div id="bt_ok" class="flex justify-center mt-2.5">
-                <button class="flex items-center px-13 py-3 bg-[#15803d]  flex rounded-full text-[19px] text-white font-bold">
+            <div  class="flex justify-center mt-2.5">
+                <button id="bt_ok" class="flex items-center bg-[#15803d] px-16 py-3 rounded-full text-[19px] text-white font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
                     <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Baixar
+                </button>
+            </div>
+            <div  class="flex justify-center mt-2.5">
+                <button id="bt_reopen" class="flex items-center px-15 py-3 bg-[#facc15] text-black rounded-full text-[19px] font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
+                    <ion-icon class="mr-2" name="arrow-up-circle-outline"></ion-icon> Reabrir
                 </button>
             </div>
         </div>

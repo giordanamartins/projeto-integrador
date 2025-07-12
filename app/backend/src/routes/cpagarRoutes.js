@@ -12,4 +12,6 @@ router.put('/:id', cpagarController.updateContasPagar);
 
 router.delete('/', cpagarController.deleteContasPagar);
 
+router.patch('/status', cpagarController.updateStatus);
+
 module.exports = router;
