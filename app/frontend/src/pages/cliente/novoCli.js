@@ -28,7 +28,6 @@ form.addEventListener('submit', async (event) => {
     const endereco_logradouro = document.getElementById('logradouro').value;
     const endereco_numero = document.getElementById('numero').value;
     const endereco_complemento = document.getElementById('complemento').value;
-   
 
     const novoCliente = {
         nome: nome,
@@ -57,13 +56,12 @@ form.addEventListener('submit', async (event) => {
         
         form.reset();
         
-       
         setTimeout(() => {
             window.location.href = '/cliente/clientes.html';
         }, 2000);
 
     } catch (error) {
-       if (error.response && error.response.data && error.response.data.error) {
+        if (error.response && error.response.data && error.response.data.error) {
                 alert(`Erro de Validação: ${error.response.data.error}`);
             } else {
                 alert('Falha ao criar cliente. Verifique o console.');

@@ -16,7 +16,7 @@
 <body class="font-[inter] bg-[#222222] ">
     <div id="sidebar-placeholder"></div>
 
-     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
+    <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
         <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div id="bt_add" class="flex justify-center">
                 <button class="px-10 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold">+ Incluir Conta</button>
@@ -27,13 +27,13 @@
                 </button>
             </div>
             <div id="bt_ok" class="flex justify-center mt-2.5">
-                <button class="flex items-center px-13 py-3 bg-[#15803d]  flex rounded-full text-[19px] text-white font-bold">
+                <button class="flex items-center px-13 py-3 bg-[#15803d]  rounded-full text-[19px] text-white font-bold">
                     <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
                 </button>
             </div>
         </div>
 
-         <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
+    <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
             
             <span class="p-1"></span>
         </div>
@@ -48,8 +48,8 @@
         <div class="headercontent flex flex-wrap px-20 pt-10 mr-20">
             <span class=" font-bold text-white text-[35px] ">Contas a receber</span>
             <div class="w=64 flex-auto"></div>
-           
         </div>
+
         <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
             <ion-icon name="search-outline" class="px-3"></ion-icon>
             <input type="text" class="w-full">
@@ -60,12 +60,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="contas_Receber.js"></script>
-
+    <script src="/projeto-integrador/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSidebar();
+        });
+    </script>
 </body>
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        loadSidebar();
-    });
-</script>
 </html>

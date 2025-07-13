@@ -10,9 +10,9 @@
     <title>Categorias de Processos</title>
 </head>
 <body class="font-[inter] bg-[#222222] ">
-   <div id="sidebar-placeholder"></div>
+    <div id="sidebar-placeholder"></div>
 
-     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
+    <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
         <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div id="bt_add" class="flex justify-center">
                 <button class="px-8 py-3.5 bg-[#2563eb] rounded-full text-[17px] text-white font-bold">+ Incluir Categoria</button>
@@ -23,7 +23,7 @@
                 </button>
             </div>
         </div>
-         <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
+    <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
             <ion-icon name="copy-outline"></ion-icon>
             <span class="p-1">Clonar Categoria</span>
         </div>
@@ -38,7 +38,7 @@
         <div class="headercontent flex flex-wrap px-20 pt-10 mr-20">
             <span class=" font-bold text-white text-[35px] ">Categorias de Processos</span>
             <div class="w=64 flex-auto"></div>
-           
+
         </div>
         <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
             <ion-icon name="search-outline" class="px-3"></ion-icon>
@@ -48,11 +48,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSidebar();
+        });
+    </script>
 </body>
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        loadSidebar();
-    });
-</script>
 </html>

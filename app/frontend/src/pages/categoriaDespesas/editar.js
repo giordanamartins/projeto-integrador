@@ -78,6 +78,3 @@ const apiUrl = '/api/catDespesas';
     });
 
     carregarDadosCat();
-
-        
-});

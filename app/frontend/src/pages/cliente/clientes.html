@@ -45,7 +45,7 @@
             <span class=" font-bold text-white text-[35px] ">Clientes</span>
             <div class="w=64 flex-auto"></div>
             <!--<button class="bg-[#942023] rounded-full text-[20px] text-white font-bold w=10 px-8 mr-1">+ Incluir Cadastro</button>-->
-           
+
         </div>
         <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
             <ion-icon name="search-outline" class="px-3"></ion-icon>
@@ -58,11 +58,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="clientes.js"></script>
+    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSidebar();
+        });
+    </script>
 </body>
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        loadSidebar();
-    });
-</script>
 </html>

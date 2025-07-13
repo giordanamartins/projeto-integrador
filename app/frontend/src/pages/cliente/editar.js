@@ -97,6 +97,3 @@ const apiUrl = '/api/clientes';
     });
 
     carregarDadosCliente();
-
-        
-});

@@ -136,7 +136,6 @@ function setupEventListenersGlobais() {
 async function atualizarStatusContas(ids, novoStatus, acaoTexto) {
     if (confirm(`Tem certeza que deseja marcar ${ids.length} conta(s) como ${acaoTexto}?`)) {
         try {
-          
             const response = await axios.patch(`${apiUrl}/status`, {
                 ids: ids,
                 status: novoStatus

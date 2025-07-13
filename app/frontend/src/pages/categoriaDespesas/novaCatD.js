@@ -14,7 +14,7 @@ form.addEventListener('submit', async (event) =>{
 
         form.reset();
 
-         setTimeout(() => {
+        setTimeout(() => {
             window.location.href = '/categoriaDespesas/categorias_desp.html';
         }, 2000);
     } catch (error){

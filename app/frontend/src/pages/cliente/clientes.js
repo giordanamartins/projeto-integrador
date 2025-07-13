@@ -13,7 +13,6 @@ let idsSelecionados = [];
             carregaTable(termoBusca);
         }, 300);
     })
-});
 
 const apiUrl = '/api/clientes';
 

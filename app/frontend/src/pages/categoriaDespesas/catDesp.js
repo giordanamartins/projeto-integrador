@@ -1,8 +1,6 @@
 let idsSelecionados = [];
 
-
 const apiUrl = '/api/catDespesas';
-
 
 document.addEventListener('DOMContentLoaded', () => {
     carregaCatDesp();
@@ -106,7 +104,8 @@ function setupEventListenersGlobais() {
         });
     }
 
- const clonarBtn = document.getElementById('bt_clonar');
+    const clonarBtn = document.getElementById('bt_clonar');
+
     if (clonarBtn) {
         clonarBtn.addEventListener('click', async () => {
             if (idsSelecionados.length !== 1) {
@@ -165,7 +164,7 @@ function updateSelecionados() {
     checkMarcados.forEach(checkbox => idsSelecionados.push(checkbox.dataset.id));
 
     const excluirBtn = document.getElementById('bt_excluir');
-     const clonarBtn = document.getElementById('bt_clonar');
+    const clonarBtn = document.getElementById('bt_clonar');
     if (excluirBtn) {
         excluirBtn.disabled = idsSelecionados.length === 0;
     }
@@ -173,4 +172,5 @@ function updateSelecionados() {
         // Habilita o botão de clonar apenas se UMA categoria estiver selecionada
         clonarBtn.disabled = idsSelecionados.length !== 1;
     }
+}
 }

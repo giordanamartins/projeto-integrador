@@ -50,13 +50,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="modeloContrato.js"></script>
+    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSidebar();
+        });
+    </script>
 </body>
-
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        loadSidebar();
-    });
-</script>
-
 </html>
