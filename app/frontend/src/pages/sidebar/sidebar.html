@@ -65,26 +65,33 @@
                 </a>
             </li>
             <li class="mb-8 group">
-                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-file-chart-line mr-3"></i>
-                    <span>Relatórios</span>
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md justify-between w-full" href="#" id="relatorios-toggle">
+                    <div class="flex items-center">
+                        <i class="ri-file-chart-line mr-3"></i>
+                        <span>Relatórios</span>
+                    </div>
+                    <i id="relatorios-arrow" class="ri-arrow-down-s-line"></i>
                 </a>
+
+                <ul id="relatorios-submenu" class="pl-8 mt-2 hidden">
+                    <li class="mb-2">
+                        <a href="/app/frontend/src/pages/relatorios/relatorioPagamentos/pagamentos.html" class="text-gray-400 hover:text-white">Relatório de Pagamentos</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/app/frontend/src/pages/relatorios/relatoriosAPagar/aPagar.html" class="text-gray-400 hover:text-white">Relatório de Contas a Pagar</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/app/frontend/src/pages/relatorios/relatorioRecebimentos/recebimentos.html" class="text-gray-400 hover:text-white">Relatório de Recebimentos</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/app/frontend/src/pages/relatorios/relatorioAReceber/aReceber.html" class="text-gray-400 hover:text-white">Relatório de A Receber</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="/app/frontend/src/pages/relatorios/relatorioProcessos/processos.html" class="text-gray-400 hover:text-white">Relatório de Processos</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
 </body>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-    const financeiroToggle = document.getElementById('financeiro-toggle');
-    const financeiroSubmenu = document.getElementById('financeiro-submenu');
-    const financeiroArrow = document.getElementById('financeiro-arrow');
-    if (financeiroToggle) {
-        financeiroToggle.addEventListener('click', (event) => {
-            event.preventDefault();
-            financeiroSubmenu.classList.toggle('hidden');
-            financeiroArrow.classList.toggle('rotate-180');
-        });
-    }
-});
-</script>
 </html>

@@ -15,6 +15,19 @@ function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
                     financeiroArrow.classList.toggle('rotate-180');
                 });
             }
+
+            const relatoriosToggle = document.getElementById('relatorios-toggle');
+            const relatoriosSubmenu = document.getElementById('relatorios-submenu');
+            const relatoriosArrow = document.getElementById('relatorios-arrow');
+
+            if (relatoriosToggle) {
+                relatoriosToggle.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    relatoriosSubmenu.classList.toggle('hidden');
+                    relatoriosArrow.classList.toggle('rotate-180');
+                });
+            }
+
         })
         .catch(error => {
             console.error('Erro ao carregar sidebar:', error);
