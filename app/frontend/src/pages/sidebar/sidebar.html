@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Modelos de Contrato</title>
+</head>
+<body class="font-[inter] bg-[#222222]">
+    <div class="sidebar fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
+        <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
+            <img src="/app/frontend/src/assets/lucca.png" alt="logo" class="w-10 h-11 mr-3"> <div class="user flex-col text-white left-3">
+                <h1 class="font-bold">User</h1>
+                <p class="font-light text-sm">Cargo</p>
+            </div>
+        </div>
+
+        <ul class="text-white mt-8">
+            <li class="mb-8 group">
+                <a href="/app/frontend/src/pages/home/index.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-home-line mr-3"></i> <span>Home</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a href="/app/frontend/src/pages/processos/processos.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-auction-line mr-3"></i>
+                    <span>Processos</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a href="/app/frontend/src/pages/cliente/clientes.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-group-line mr-3"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+            <li class="mb-4 group">
+
+                <a href="#" id="financeiro-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <div class="flex items-center">
+                        <i class="ri-coins-line mr-3 text-lg"></i>
+                        <span>Financeiro</span>
+                    </div>
+                    <i id="financeiro-arrow" class="ri-arrow-down-s-line"></i>
+                </a>
+                
+                
+                <ul id="financeiro-submenu" class="pl-8 mt-2 hidden">
+                    <li class="mb-2">
+                        
+                        <a href="../contasPagar/contas_pagar.html" class="text-gray-400 hover:text-white">Contas a Pagar</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-calendar-2-line mr-3"></i>
+                    <span>Agenda</span>
+                </a>
+            </li>
+            <li class="mb-8 group">
+                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <i class="ri-file-chart-line mr-3"></i>
+                    <span>Relatórios</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const financeiroToggle = document.getElementById('financeiro-toggle');
+    const financeiroSubmenu = document.getElementById('financeiro-submenu');
+    const financeiroArrow = document.getElementById('financeiro-arrow');
+    if (financeiroToggle) {
+        financeiroToggle.addEventListener('click', (event) => {
+            // Impede o comportamento padrão do link (que seria navegar para '#')
+            event.preventDefault();
+
+            // Alterna a classe 'hidden' no submenu, fazendo-o aparecer ou desaparecer
+            financeiroSubmenu.classList.toggle('hidden');
+
+            // Alterna a classe 'rotate-180' no ícone da seta para girá-lo
+            financeiroArrow.classList.toggle('rotate-180');
+        });
+    }
+});
+</script>
+</html>
