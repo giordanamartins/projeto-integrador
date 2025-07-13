@@ -133,11 +133,37 @@ const deleteContasPagar = async (req, res) => {
     }
 };
 
+const relatorioContasAPagar = async (req, res) => {
+    try {
+        const query = "'SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao, a.valor FROM a_pagar a JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo WHERE a.status = 'A' ORDER BY a.data_vencimento;";
+        const { rows } = await db.query(query);
+        res.status(200).json(rows);
+    } 
+    catch (error) {
+        console.error('Erro no relatório de contas a pagar:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
+const relatorioPagamentos = async (req, res) => {
+    try {
+        const query = "SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao, a.valor FROM a_pagar a JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo WHERE a.status = 'P' ORDER BY a.data_vencimento;";
+        const { rows } = await db.query(query);
+        res.status(200).json(rows);
+    } 
+    catch (error) {
+        console.error('Erro no relatório de pagamentos:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
 module.exports = {
   getContasPagar,
   getContasPagarHoje,
   createContasPagar,
   updateContasPagar,
   deleteContasPagar,
-  updateStatus
+  updateStatus,
+  relatorioContasAPagar,
+  relatorioPagamentos
 };
