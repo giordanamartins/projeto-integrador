@@ -7,124 +7,60 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
 </head>
-<body class="font-[inter] bg-[#C0C0C0] text-black p-6">
-
-<!-- sidebar -->
-<div class="fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
-    <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
-        <img src="../assets/lucca.png" alt="logo" class="w-10 h-11 mr-3">
-        <div class="user flex-col text-white left-3">
-        <h1 class="font-bold">User</h1>
-        <p class="font-light text-sm">Cargo</p>
-    </div>
-    </div>
-
-    <ul class="text-white mt-8">
-        <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-            <i class="ri-home-line mr-3"></i>
-            <span>Home</span>
-            </a>
-        </li>
-        <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                <i class="ri-auction-line mr-3"></i>
-                <span>Processos</span>
-            </a>
-        </li>
-        <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                <i class="ri-group-line mr-3"></i>
-                <span>Clientes</span>
-            </a>
-        </li>
-        <li class="mb-4 group">
-               
-            <a href="#" id="financeiro-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
-                <div class="flex items-center">
-                    <i class="ri-coins-line mr-3 text-lg"></i>
-                    <span>Financeiro</span>
-                </div>
-                <i id="financeiro-arrow" class="ri-arrow-down-s-line"></i>
-            </a>
-            
-            
-            <ul id="financeiro-submenu" class="pl-8 mt-2 hidden">
-                <li class="mb-2">
-                    
-                    <a href="../contasPagar/contas_pagar.html" class="text-gray-400 hover:text-white">Contas a Pagar</a>
-                </li>
-                <li class="mb-2">
-                    <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
-                </li>
-            </ul>
-            </li>
-        <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                <i class="ri-calendar-2-line mr-3"></i>
-                <span>Agenda</span>
-            </a>
-        </li>
-        <li class="mb-8 group">
-            <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                <i class="ri-file-chart-line mr-3"></i>
-                <span>Relatórios</span>
-            </a>
-        </li>
-        </ul>
-</div>
+<body class="font-[inter] bg-[#222222] text-white p-6">
+<div id="sidebar-placeholder"></div>
 
     <!-- form -->
     <div class="ml-64 p-6">
-        <form class="bg-white p-6 rounded-xl shadow-lg max-w-6xl mx-auto space-y-6">
+        <form class="bg-[#3f3f46] text-white p-6 rounded-xl shadow-lg max-w-6xl mx-auto space-y-6">
         <h1 class="text-2xl font-bold mb-4">Cadastro de Processo</h1>
 
         <div class="space-y-4">
             <div class="flex flex-wrap gap-4">
             <div class="flex flex-col w-24">
                 <label class="mb-1">Código</label>
-                <input type="text" class="p-2 rounded bg-gray-200 text-black" />
+                <input type="text" class="p-2 rounded bg-[#222222] text-white" />
             </div>
 
             <div class="flex flex-col w-full md:w-1/2">
                 <label class="mb-1">Advogado Responsável*</label>
-                <select class="p-2 rounded bg-gray-200 text-black">
+                <select class="p-2 rounded bg-[#222222] text-white">
                 <!-- pendente integração front-back -->
                 </select>
             </div>
 
             <div class="flex flex-col w-full md:w-1/2">
                 <label class="mb-1">Cliente*</label>
-                <select class="p-2 rounded bg-gray-200 text-black">
+                <select class="p-2 rounded bg-[#222222] text-white">
                 <!-- pendente integração front-back -->
                 </select>
             </div>
 
             <div class="flex flex-col w-full">
                 <label class="mb-1">Descrição do Processo*</label>
-                <textarea rows="3" class="p-2 rounded bg-gray-200 text-black resize-none" placeholder="Informe a descrição do processo"></textarea>
+                <textarea rows="3" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Informe a descrição do processo"></textarea>
             </div>
 
             <div class="flex flex-col w-full md:w-1/3">
                 <label class="mb-1">Categoria*</label>
-                <select class="p-2 rounded bg-gray-200 text-black">
+                <select class="p-2 rounded bg-[#222222] text-white">
                 <!-- pendente integração front-back -->
                 </select>
             </div>
 
             <div class="flex flex-col w-full md:w-1/3">
                 <label class="mb-1">Valor a Pagar*</label>
-                <input type="number" class="p-2 rounded bg-gray-200 text-black" placeholder="R$ 0,00" />
+                <input type="number" class="p-2 rounded bg-[#222222] text-white" placeholder="R$ 0,00" />
             </div>
 
             <div class="flex flex-col w-full md:w-1/3">
                 <label class="mb-1">Anexos</label>
-                <input type="file" id="anexos" name="anexos" class="p-2 rounded bg-gray-200 text-black" multiple />
+                <input type="file" id="anexos" name="anexos" class="p-2 rounded bg-[#222222] text-white" multiple />
             </div>
 
             <div class="flex flex-col w-full">
                 <label class="mb-1">Comentários</label>
-                <textarea rows="4" class="p-2 rounded bg-gray-200 text-black resize-none" placeholder="Escreva observações ou informações adicionais"></textarea>
+                <textarea rows="4" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Escreva observações ou informações adicionais"></textarea>
             </div>
             </div>
         </div>
@@ -136,4 +72,10 @@
         </form>
     </div>
 </body>
+<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSidebar();
+    });
+</script>
 </html>
