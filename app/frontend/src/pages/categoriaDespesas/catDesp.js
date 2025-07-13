@@ -105,19 +105,6 @@ function setupEventListenersGlobais() {
             }
         });
     }
-    
-
-    const financeiroToggle = document.getElementById('financeiro-toggle');
-    const financeiroSubmenu = document.getElementById('financeiro-submenu');
-    const financeiroArrow = document.getElementById('financeiro-arrow');
-    if (financeiroToggle) {
-        financeiroToggle.addEventListener('click', (event) => {
-            event.preventDefault();
-            financeiroSubmenu.classList.toggle('hidden');
-            financeiroArrow.classList.toggle('rotate-180');
-        });
-    }
-}
 
  const clonarBtn = document.getElementById('bt_clonar');
     if (clonarBtn) {
