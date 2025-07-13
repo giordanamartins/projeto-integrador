@@ -16,67 +16,8 @@
 </head>
 
 <body class="font-[inter] bg-[#222222] ">
-    <div class="sidebar fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
-        <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
-            <img src="../assets/lucca.png" alt="logo" class="w-10 h-11 mr-3"> <div class="user flex-col text-white left-3">
-                <h1 class="font-bold">User</h1>
-                <p class="font-light text-sm">Cargo</p>
-            </div>
-        </div>
-
-        <ul class="text-white mt-8">
-            <li class="mb-8 group">
-                <a href="../home/index.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-home-line mr-3"></i> <span>Home</span>
-                </a>
-            </li>
-            <li class="mb-8 group">
-                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i href="../processos/processos.html" class="ri-auction-line mr-3"></i>
-                    <span>Processos</span>
-                </a>
-            </li>
-            <li class="mb-8 group">
-                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-group-line mr-3"></i>
-                    <span>Clientes</span>
-                </a>
-            </li>
-            <li class="mb-4 group">
-               
-                <a href="#" id="financeiro-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <div class="flex items-center">
-                        <i class="ri-coins-line mr-3 text-lg"></i>
-                        <span>Financeiro</span>
-                    </div>
-                    <i id="financeiro-arrow" class="ri-arrow-down-s-line"></i>
-                </a>
-                
-                
-                <ul id="financeiro-submenu" class="pl-8 mt-2 hidden">
-                    <li class="mb-2">
-                        
-                        <a href="../contasPagar/contas_pagar.html" class="text-gray-400 hover:text-white">Contas a Pagar</a>
-                    </li>
-                    <li class="mb-2">
-                        <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="mb-8 group">
-                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-calendar-2-line mr-3"></i>
-                    <span>Agenda</span>
-                </a>
-            </li>
-            <li class="mb-8 group">
-                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-file-chart-line mr-3"></i>
-                    <span>Relatórios</span>
-                </a>
-            </li>
-        </ul>
-    </div>
+    <div id="sidebar-placeholder"></div>
+    
     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
         <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div href="index.html" id="bt_add" class="flex justify-center">
@@ -117,5 +58,11 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="clientes.js"></script>
+    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSidebar();
+    });
+</script>
 </body>
 </html>
