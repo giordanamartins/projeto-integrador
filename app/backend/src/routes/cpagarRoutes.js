@@ -6,7 +6,7 @@ const cpagarController = require('../controllers/cpagarController');
 router.get('/', cpagarController.getContasPagar);
 router.get('/hoje', cpagarController.getContasPagarHoje);
 router.get('/relatorio-apagar', cpagarController.relatorioContasAPagar)
-router.get('/relatorio-pagos', cpagarController.relatorioPagamentos)
+router.get('/relatorio-pagamentos', cpagarController.relatorioPagamentos)
 
 router.post('/', cpagarController.createContasPagar);
 

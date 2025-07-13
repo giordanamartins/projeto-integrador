@@ -16,6 +16,7 @@ function loadSidebar(path = '/sidebar/sidebar.html') {
                 });
             }
 
+
             const processoToggle = document.getElementById('processo-toggle');
             const processoSubmenu = document.getElementById('processo-submenu');
             const processoArrow = document.getElementById('processo-arrow');
@@ -25,6 +26,18 @@ function loadSidebar(path = '/sidebar/sidebar.html') {
                     event.preventDefault();
                     processoSubmenu.classList.toggle('hidden');
                     processoArrow.classList.toggle('rotate-180');
+                });
+            }
+
+            const relatoriosToggle = document.getElementById('relatorios-toggle');
+            const relatoriosSubmenu = document.getElementById('relatorios-submenu');
+            const relatoriosArrow = document.getElementById('relatorios-arrow');
+
+            if (relatoriosToggle) {
+                relatoriosToggle.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    relatoriosSubmenu.classList.toggle('hidden');
+                    relatoriosArrow.classList.toggle('rotate-180');
                 });
             }
         })
