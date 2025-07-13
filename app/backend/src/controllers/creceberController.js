@@ -87,10 +87,60 @@ const deleteContasReceber = async (req, res) => {
           }
 }
 
+const relatorioContasAReceber = async (req, res) => {
+  try {
+    const query = `
+      SELECT
+        ar.codigo,
+        c.nome AS cliente,
+        p.descricao AS processo,
+        ar.descricao,
+        ar.data_vencimento,
+        ar.valor
+      FROM a_receber ar
+      JOIN clientes c ON ar.cliente_codigo = c.codigo
+      JOIN processos p ON ar.processo_codigo = p.codigo
+      WHERE ar.status = 'A'
+      ORDER BY ar.data_vencimento;
+    `;
+    const { rows } = await db.query(query);
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Erro no relatório de contas a receber:', error);
+    res.status(500).json({ message: 'Erro interno do servidor.' });
+  }
+};
+
+const relatorioRecebimentos = async (req, res) => {
+  try {
+    const query = `
+      SELECT
+        ar.codigo,
+        c.nome AS cliente,
+        p.descricao AS processo,
+        ar.descricao,
+        ar.data_vencimento,
+        ar.valor
+      FROM a_receber ar
+      JOIN clientes c ON ar.cliente_codigo = c.codigo
+      JOIN processos p ON ar.processo_codigo = p.codigo
+      WHERE ar.status = 'R'
+      ORDER BY ar.data_vencimento;
+    `;
+    const { rows } = await db.query(query);
+    res.status(200).json(rows);
+  } catch (error) {
+    console.error('Erro no relatório de recebimentos:', error);
+    res.status(500).json({ message: 'Erro interno do servidor.' });
+  }
+};
+
 module.exports = {
   getContasReceber,
   getContasReceberHoje,
   createContasReceber,
   updateContasReceber,
-  deleteContasReceber
+  deleteContasReceber,
+  relatorioContasAReceber,
+  relatorioRecebimentos
 };
