@@ -77,9 +77,96 @@ const deleteProcesso = async (req, res) => {
     }
 }
 
+const gerarContratoTexto = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const query = `
+        SELECT 
+            p.descricao,
+            p.status,
+            cl.nome,
+            cl.cpf_cnpj,
+            cp.nome AS categoria,
+            mc.implementacao_modelo,
+            (
+                SELECT SUM(ar.valor)
+                FROM a_receber ar
+                WHERE ar.processo_codigo = p.codigo
+            ) AS valor
+            FROM processos p
+            JOIN clientes cl ON cl.codigo = p.cliente_codigo
+            JOIN categorias_processo cp ON cp.codigo = p.categoria_codigo
+            JOIN modelos_contratos mc ON mc.codigo = p.modelo_contrato_codigo
+            WHERE p.codigo = $1;
+        `;
+
+        const { rows } = await db.query(query, [id]);
+
+        if (rows.length === 0) {
+        return res.status(404).json({ message: 'Processo não encontrado.' });
+        }
+
+        const dados = rows[0];
+        let contrato = dados.modelo;
+
+        const valorFormatado = dados.valor_total
+        ? `R$ ${Number(dados.valor_total).toFixed(2).replace('.', ',')}`
+        : 'R$ 0,00';
+
+        const variaveis = {
+            '{{nome_cliente}}': dados.nome,
+            '{{cpf}}': dados.cpf_cnpj,
+            '{{descricao}}': dados.descricao,
+            '{{valor}}': valorFormatado,
+            '{{categoria}}': dados.categoria
+        };
+
+        for (const [variavel, valor] of Object.entries(variaveis)) {
+        contrato = contrato.replaceAll(variavel, valor || '');
+        }
+
+        res.status(200).json({ contrato });
+
+    } 
+    catch (err) {
+        console.error('Erro ao gerar contrato preenchido:', err);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
+const relatorioProcessos = async (req, res) => {
+    try {
+        const query = `
+        SELECT
+            p.codigo,
+            p.descricao,
+            p.comentarios,
+            p.status,
+            c.nome AS cliente,
+            u.nome AS usuario,
+            cp.nome AS categoria,
+            p.modelo_contrato_codigo
+        FROM processos p
+        JOIN clientes c ON p.cliente_codigo = c.codigo
+        JOIN usuarios u ON p.usuario_codigo = u.codigo
+        JOIN categorias_processo cp ON p.categoria_codigo = cp.codigo
+        WHERE status = 'A'
+        ORDER BY p.codigo;
+        `;
+        const { rows } = await db.query(query);
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Erro no relatório de processos:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
 module.exports = {
     getProcessos,
     createProcesso,
     updateProcesso,
-    deleteProcesso
+    deleteProcesso,
+    gerarContratoTexto,
+    relatorioProcessos
 }
