@@ -113,17 +113,6 @@ function setupEventListenersGlobais() {
         });
     }
     
-
-    const financeiroToggle = document.getElementById('financeiro-toggle');
-    const financeiroSubmenu = document.getElementById('financeiro-submenu');
-    const financeiroArrow = document.getElementById('financeiro-arrow');
-    if (financeiroToggle) {
-        financeiroToggle.addEventListener('click', (event) => {
-            event.preventDefault();
-            financeiroSubmenu.classList.toggle('hidden');
-            financeiroArrow.classList.toggle('rotate-180');
-        });
-    }
     const excluirBtn = document.getElementById('bt_del'); // Garanta que seu botão tenha id="bt_del"
     if (excluirBtn) {
         excluirBtn.addEventListener('click', async () => {
