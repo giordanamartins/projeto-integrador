@@ -1,21 +1,23 @@
 const express = require('express');
 const router = express.Router();
-
-// O require do controller vem primeiro
 const catDespesaController = require('../controllers/catDespesaController');
 
-// A rota usa a função importada
+// Rota para listar todas e buscar
 router.get('/', catDespesaController.getCatDespesa);
 
+// Rota para buscar UMA categoria pelo ID
 router.get('/:id', catDespesaController.getCatById);
 
+// Rota para criar uma nova categoria
 router.post('/', catDespesaController.createCatDespesa);
 
+// Rota para clonar uma categoria
 router.post('/:id/clone', catDespesaController.cloneCatDespesa);
 
-router.put('/:id' , catDespesaController.updateCatDespesa);
+// Rota para atualizar uma categoria
+router.put('/:id', catDespesaController.updateCatDespesa);
 
-router.delete('/' , catDespesaController.deleteCatDespesa);
+// Rota para deletar múltiplas categorias
+router.delete('/', catDespesaController.deleteCatDespesa);
 
-// Certifique-se que esta é a única linha de exportação no arquivo
 module.exports = router;

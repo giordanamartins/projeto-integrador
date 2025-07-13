@@ -15,10 +15,12 @@
     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
         <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div id="bt_add" class="flex justify-center">
-                <button class="px-8 py-3.5 bg-[#2563eb] rounded-full text-[17px] text-white font-bold">+ Incluir Categoria</button>
+                <a href="index.html">
+                    <button class="px-8 py-3.5 bg-[#2563eb] rounded-full text-[17px] text-white font-bold">+ Incluir Categoria</button>
+                </a>
             </div>
             <div id="bt_del" class="flex justify-center mt-2.5">
-                <button class="flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] text-white font-bold">
+                <button id="bt_excluir" class="flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] text-white font-bold">
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
                 </button>
             </div>
@@ -42,13 +44,15 @@
         </div>
         <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
             <ion-icon name="search-outline" class="px-3"></ion-icon>
-            <input type="text" class="w-full">
+            <input id="search" type="text" class="w-full">
         </div>
+        <div id="tabelaCat" class="row"></div>
+    </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script src="categorias_processo.js"></script>
+    <script src="../sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

@@ -12,7 +12,7 @@ initializePassport(passport);
 
 // O require das rotas vem primeiro
 const catDespesaRoutes = require('./routes/catDespesaRoutes');
-const catProcessosRoutes = require('./routes/catProcessoRoutes');
+const catProcessosRoutes = require('./routes/catProcessosRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
 const cpagarRoutes = require('./routes/cpagarRoutes');
 const creceberRoutes = require('./routes/creceberRoutes');
@@ -72,15 +72,17 @@ app.use('/api/auth', authRoutes);
 // Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'src', 'pages')));
 
-app.use('/api/catDespesas', catDespesaRoutes);
-app.use('/api/catProcessos', catProcessosRoutes);
-app.use('/api/clientes', clienteRoutes);
-app.use('/api/contasPagar', cpagarRoutes);
-app.use('/api/contasReceber', creceberRoutes);
-app.use('/api/modelos', modelosRoutes);
-app.use('/api/processos', processosRoutes);
-app.use('/api/tarefas', tarefasRoutes);
-app.use('/api/usuarios', usuarioRoutes);
+
+
+app.use('/api/catDespesas', isAuthenticated, catDespesaRoutes);
+app.use('/api/catProcessos',isAuthenticated, catProcessosRoutes);
+app.use('/api/clientes',isAuthenticated, clienteRoutes);
+app.use('/api/contasPagar', isAuthenticated, cpagarRoutes);
+app.use('/api/contasReceber', isAuthenticated, creceberRoutes);
+app.use('/api/processos', isAuthenticated, processosRoutes);
+app.use('/api/tarefas', isAuthenticated, tarefasRoutes);
+app.use('/api/usuarios', isAuthenticated, usuarioRoutes);
+
 
 // Iniciar o servidor
 const PORT = process.env.PORT || 3000;

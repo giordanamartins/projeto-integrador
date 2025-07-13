@@ -1,20 +1,27 @@
 let idsSelecionados = [];
+const apiUrl = '/api/clientes';
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Carrega a tabela assim que a página estiver pronta
     carregaTable();
 
+    // Configura o "escutador" para a barra de pesquisa
     const search = document.getElementById('search');
     let digita;
 
-    search.addEventListener('input', (event)=>{
-        clearTimeout(digita);
-        const termoBusca = event.target.value;
+    if (search) {
+        search.addEventListener('input', (event) => {
+            clearTimeout(digita);
+            const termoBusca = event.target.value;
 
-        digita = setTimeout(() => {
-            carregaTable(termoBusca);
-        }, 300);
-    })
+            digita = setTimeout(() => {
+                carregaTable(termoBusca);
+            }, 300);
+        });
+    }
+});
 
-const apiUrl = '/api/clientes';
+
 
 const carregaTable = async (termoBusca = '') => {
     const containerTabela = document.getElementById('tabelaClis');

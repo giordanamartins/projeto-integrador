@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+    rel="stylesheet"
+  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  </head>
+  <body class="font-[inter] bg-[#222222] text-white p-6">
+  <div id="sidebar-placeholder"></div>
+
+  <!-- forms -->
+  <div class="ml-64 p-6">
+    <form id="form_processo" class="bg-[#3f3f46] p-6 rounded-xl shadow-lg max-w-4xl mx-auto space-y-6">
+        <h1 class="text-2xl font-bold mb-4">Cadastro de Categoria de Processo</h1>
+
+        <div class="space-y-4">
+            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-col w-24">
+                <label class="mb-1">Código</label>
+                <input id="codigo" type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
+            </div>
+
+            <div class="flex flex-col w-full md:w-1/2">
+                <label class="mb-1">Nome da Categoria*</label>
+                <input id="nome" type="text" class="p-2 rounded bg-[#222222] text-white" placeholder="Ex: Cível, Trabalhista..." required />
+            </div>
+
+            <div class="flex flex-col w-full">
+                <label class="mb-1">Descrição*</label>
+                <textarea id="descricao" rows="4" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Descreva a finalidade ou detalhes da categoria" required></textarea>
+            </div>
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+            <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
+            <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]">Cancelar</button>
+        </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="editar.js" defer></script>
+  <script src="../sidebar/sidebarLoader.js"></script>
+  <script>
+      document.addEventListener('DOMContentLoaded', () => {
+          loadSidebar();
+      });
+  </script>
+</body>
+</html>

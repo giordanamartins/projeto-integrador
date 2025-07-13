@@ -1,9 +1,9 @@
 let idsSelecionados = [];
-const apiUrl = '/api/catDespesas';
+const apiUrl = '/api/catProcessos';
 
 // Função principal que é chamada quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
-    carregaCatDesp();
+    carregaCatProc();
     setupEventListenersGlobais(); // Configura os eventos que só precisam ser adicionados uma vez
 });
 
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
  * Busca as categorias da API e constrói a tabela HTML.
  * @param {string} termoBusca - O texto a ser pesquisado.
  */
-const carregaCatDesp = async (termoBusca = '') => {
+const carregaCatProc = async (termoBusca = '') => {
     const containerTabela = document.getElementById('tabelaCat');
     const qtdRegElement = document.getElementById('qtdReg');
 
@@ -35,7 +35,8 @@ const carregaCatDesp = async (termoBusca = '') => {
                         <th class="px-5">
                             <input type="checkbox" id="checkbox-all" title="Selecionar Todos">
                         </th>
-                        <th class="px-100">Descrição</th>
+                        <th class="px-50">Nome</th>
+                        <th class="px-50">Descrição</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +51,7 @@ const carregaCatDesp = async (termoBusca = '') => {
                         <td class="px-5 py-4">
                             <input type="checkbox" class="checkbox-categoria" data-id="${categoria.codigo}">
                         </td>
+                        <td class="px-6 py-4 font-medium whitespace-nowrap text-white">${categoria.nome || ''}</td>
                         <td class="px-6 py-4 font-medium whitespace-nowrap text-white">${categoria.descricao || ''}</td>
                     </tr>
                 `;
@@ -82,7 +84,7 @@ function setupEventListenersGlobais() {
             clearTimeout(debounceTimer);
             const termoBusca = event.target.value;
             debounceTimer = setTimeout(() => {
-                carregaCatDesp(termoBusca);
+                carregaCatProc(termoBusca);
             }, 300);
         });
     }
@@ -96,7 +98,7 @@ function setupEventListenersGlobais() {
                 try {
                     const response = await axios.delete(apiUrl, { data: { ids: idsSelecionados } });
                     alert(response.data.message);
-                    carregaCatDesp();
+                    carregaCatProc();
                 } catch (error) {
                     const msgErro = error.response ? error.response.data.message : 'Falha ao excluir categorias.';
                     alert(msgErro);
@@ -121,7 +123,7 @@ function setupEventListenersGlobais() {
                 try {
                     const response = await axios.post(`${apiUrl}/${idParaClonar}/clone`);
                     alert(response.data.message);
-                    carregaCatDesp();
+                    carregaCatProc();
                 } catch (error) {
                     const msgErro = error.response ? error.response.data.message : 'Falha ao clonar a categoria.';
                     alert(msgErro);

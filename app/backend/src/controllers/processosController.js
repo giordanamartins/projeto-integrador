@@ -13,21 +13,48 @@ const getProcessos = async (req, res) => {
 }
 
 const createProcesso = async (req, res) => {
-    const { descricao, comentarios, status, cliente_codigo, usuario_codigo, categoria_codigo, modelo_contrato_codigo } = req.body;
+    // Pega os dados do corpo da requisição enviados pelo formulário
+    const { 
+        descricao,
+        comentarios,
+        cliente_codigo, 
+        usuario_codigo, // Este é o código do advogado responsável
+        categoria_codigo,
+        modelo_contrato_codigo
+    } = req.body;
+
+    // Validação dos dados essenciais
+    if (!cliente_codigo || !usuario_codigo || !categoria_codigo || !modelo_contrato_codigo) {
+        return res.status(400).json({ message: 'Cliente, usuário (advogado), categoria e modelo de contrato são obrigatórios.' });
+    }
 
     try {
-        const queryText = 'INSERT INTO processos (descricao, comentarios, status, cliente_codigo, usuario_codigo, categoria_codigo, modelo_contrato_codigo) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *;';
-        const values = [descricao, comentarios, status, cliente_codigo, usuario_codigo, categoria_codigo, modelo_contrato_codigo];
-
+        // Assume-se que um novo processo sempre começa com status 'A' (Em Aberto).
+        // A sua nova tabela não tem data_abertura, então removi.
+        const queryText = `
+            INSERT INTO processos 
+                (descricao, comentarios, status, cliente_codigo, usuario_codigo, categoria_codigo, modelo_contrato_codigo) 
+            VALUES ($1, $2, 'A', $3, $4, $5, $6) 
+            RETURNING *;`;
+        
+        const values = [
+            descricao || null, 
+            comentarios || null,
+            cliente_codigo, 
+            usuario_codigo, 
+            categoria_codigo,
+            modelo_contrato_codigo
+        ];
+        
         const { rows } = await db.query(queryText, values);
+        
+        res.status(201).json({ message: 'Processo criado com sucesso!', processo: rows[0] });
 
-        res.status(201).json({ message: 'Processo cadastrado com sucesso!', processos: rows[0] });
-    }
-    catch (error) {
-        console.error('Erro ao cadastrar processo:', error);
+    } catch (error) {
+        console.error('Erro ao inserir processo:', error);
         res.status(500).json({ message: 'Erro interno do servidor.' });
     }
-}
+};
 
 const updateProcesso = async (req, res) => {
     const { id } = req.params;

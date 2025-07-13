@@ -33,6 +33,18 @@ const createUser = async (req, res) => {
     }
 };
 
+const getAdvogados = async (req, res) => {
+    try {
+        const queryText = "SELECT codigo, nome FROM usuarios WHERE tipo_usuario = 'A' ORDER BY nome ASC";
+        const { rows } = await db.query(queryText);
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Erro ao buscar advogados:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
 module.exports = {
-    createUser
+    createUser,
+    getAdvogados
 };

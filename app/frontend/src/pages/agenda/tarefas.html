@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Agenda</title>
+</head>
+<body class="font-[inter] bg-[#222222] ">
+    <div id="sidebar-placeholder">
+    </div>
+
+     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
+        <div class="botoes py-2 px-3 flex-col justify-center items-center">
+            <div id="bt_add" class="flex justify-center">
+                <a href="index.html">
+                    <button class="cursor-pointer px-10 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold">+ Incluir Tarefa</button>
+                </a>
+            </div>
+            <div  class="flex justify-center mt-2.5">
+                <button id="bt_del" class="flex items-center bg-[#942023] px-16 py-3   rounded-full text-[19px] text-white font-bold">
+                    <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
+                </button>
+            </div>
+            <div  class="flex justify-center mt-2.5">
+                <button id="bt_ok" class="flex items-center bg-[#15803d] px-15 py-3 rounded-full text-[19px] text-white font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
+                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
+                </button>
+            </div>
+            <div  class="flex justify-center mt-2.5">
+                <button id="bt_reopen" class="flex items-center px-16 py-3 bg-[#facc15] text-black rounded-full text-[19px] font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
+                    <ion-icon class="mr-2" name="arrow-up-circle-outline"></ion-icon> Reabrir
+                </button>
+            </div>
+        </div>
+
+         <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
+            
+            <span class="p-1"></span>
+        </div>
+        <div class="mt-20 registros font-bold text-center">
+            <span class="text-red-500">Quantidade de tarefas: </span>
+            <div id="qtdReg" class="text-white">
+            </div>
+        </div>
+    </div>
+
+    <div class="content ml-84  min-h-screen p-4 ">
+        <div class="headercontent flex flex-wrap px-20 pt-10 mr-20">
+            <span class=" font-bold text-white text-[35px] ">Agenda</span>
+            <div class="w=64 flex-auto"></div>
+           
+        </div>
+        <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
+            <ion-icon name="search-outline" class="px-3"></ion-icon>
+            <input type="text" class="w-full">
+        </div>
+
+        <div id="tabelaCPagar" class="row"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="tarefas.js"></script>
+     <script src="../sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSidebar();
+        });
+    </script>
+        
+
+</body>
+</html>

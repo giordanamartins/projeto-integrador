@@ -4,20 +4,29 @@ const dataLoad = async () => {
     const totPag = document.getElementById('totPag');
     const qtdPag = document.getElementById('qtdPag');
     
+    try {
+        const [responseReceber, responsePagar] = await Promise.all([
+            axios.get('/api/contasReceber/hoje'),
+            axios.get('/api/contasPagar/hoje')
+        ]);
 
-    if (!totRec) {
-        console.error('Erro: Elemento com id "totRec" não foi encontrado no HTML.');
-        return;
+        const contasReceber = responseReceber.data;
+        const totalReceber = contasReceber.reduce((soma, conta) => soma + (parseFloat(conta.valor) || 0), 0);
+
+        if (qtdRec) qtdRec.innerText = contasReceber.length;
+        if(totRec) totRec.innerText = new Intl.NumberFormat('pt-BR', {minimumFractionDigits: 2}).format(totalReceber);
+
+        const contasPagar = responsePagar.data;
+        const totalPagar = contasPagar.reduce((soma, conta) => soma + (parseFloat(conta.valor) || 0), 0);
+        
+        if (qtdPag) qtdPag.innerText = contasPagar.length;
+        if (totPag) totPag.innerText = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(totalPagar);
+     } catch (error) {
+        console.error('Erro ao carregar resumo financeiro:', error);
+
+        if (totRecEl) totRecEl.innerText = 'Erro';
+        if (totPagEl) totPagEl.innerText = 'Erro'; 
     }
-
-    if (!totPag) {
-        console.error('Erro: Elemento com id "totRec" não foi encontrado no HTML.');
-        return;
-    }
-
-    const responser = await axios.get('/api/contasReceber/hoje');
-    const contaRec = responser.data;
-    const totalHJr = contaRec.reduce((somar, contar) => somar + contar.totalr, 0);
     
     console.log(totalHJr);
     
@@ -43,3 +52,5 @@ const dataLoad = async () => {
         totPag.innerHTML = `${totalHJp}`;
     }
 }
+
+

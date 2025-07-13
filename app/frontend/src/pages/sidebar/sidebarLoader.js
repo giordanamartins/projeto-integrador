@@ -1,4 +1,4 @@
-function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
+function loadSidebar(path = '/sidebar/sidebar.html') {
     fetch(path)
         .then(response => response.text())
         .then(html => {
@@ -13,6 +13,18 @@ function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
                     event.preventDefault();
                     financeiroSubmenu.classList.toggle('hidden');
                     financeiroArrow.classList.toggle('rotate-180');
+                });
+            }
+
+            const processoToggle = document.getElementById('processo-toggle');
+            const processoSubmenu = document.getElementById('processo-submenu');
+            const processoArrow = document.getElementById('processo-arrow');
+
+            if (processoToggle) {
+                processoToggle.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    processoSubmenu.classList.toggle('hidden');
+                    processoArrow.classList.toggle('rotate-180');
                 });
             }
         })

@@ -13,11 +13,17 @@ const getTarefas = async (req, res) => {
 }
 
 const createTarefa = async (req, res) => {
-    const { descricao, data_hora, usuario_codigo } = req.body;
+    const { descricao, data_hora } = req.body;
+
+    const usuario_codigo = req.user.codigo;
+
+    if (!data_hora) {
+        return res.status(400).json({ message: 'Data/Hora é obrigatório.' });
+    }
 
     try {
-        const queryText = 'INSERT INTO a_receber (descricao, data_hora, usuario_codigo) VALUES ($1, $2, $3) RETURNING *;';
-        const values = [descricao, data_hora, usuario_codigo];
+        const queryText = 'INSERT INTO tarefas (descricao, data_hora, usuario_codigo) VALUES ($1, $2, $3) RETURNING *;';
+        const values = [descricao || null, data_hora, usuario_codigo];
         
         const { rows } = await db.query(queryText, values);
 

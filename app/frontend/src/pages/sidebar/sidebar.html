@@ -8,12 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <title>Modelos de Contrato</title>
+    <title>Sidebar</title>
 </head>
 <body class="font-[inter] bg-[#222222]">
     <div class="sidebar fixed left-0 top-0 w-64 h-full bg-red-950 p-4">
         <div class="flex items-center pb-4 border-b border-b-gray-600 top-9 m-5 h-1/8">
-            <img src="/app/frontend/src/assets/lucca.png" alt="logo" class="w-10 h-11 mr-3"> <div class="user flex-col text-white left-3">
+            <img src="../assets/lucca.png" alt="logo" class="w-10 h-11 mr-3"> <div class="user flex-col text-white left-3">
                 <h1 class="font-bold">User</h1>
                 <p class="font-light text-sm">Cargo</p>
             </div>
@@ -21,18 +21,33 @@
 
         <ul class="text-white mt-8">
             <li class="mb-8 group">
-                <a href="/app/frontend/src/pages/home/index.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                <a href="../home/index.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
                     <i class="ri-home-line mr-3"></i> <span>Home</span>
                 </a>
             </li>
-            <li class="mb-8 group">
-                <a href="/app/frontend/src/pages/processos/processos.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
-                    <i class="ri-auction-line mr-3"></i>
-                    <span>Processos</span>
+            <li class="mb-4 group">
+
+                <a href="#" id="processo-toggle" class="flex items-center justify-between w-full py-2 px-4 hover:bg-gray-800 rounded-md">
+                    <div class="flex items-center">
+                        <i class="ri-auction-line mr-3"></i>
+                        <span>Processos</span>
+                    </div>
+                    <i id="processo-arrow" class="ri-arrow-down-s-line"></i>
                 </a>
+                
+                
+                <ul id="processo-submenu" class="pl-8 mt-2 hidden">
+                    <li class="mb-2">
+                        
+                        <a href="../processos/processos.html" class="text-gray-400 hover:text-white">Todos os processos</a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="../categoriaProcessos/categorias_processo.html" class="text-gray-400 hover:text-white">Categorias de processos</a>
+                    </li>
+                </ul>
             </li>
             <li class="mb-8 group">
-                <a href="/app/frontend/src/pages/cliente/clientes.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                <a href="../cliente/clientes.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
                     <i class="ri-group-line mr-3"></i>
                     <span>Clientes</span>
                 </a>
@@ -56,10 +71,13 @@
                     <li class="mb-2">
                         <a href="../contasReceber/contas_receber.html" class="text-gray-400 hover:text-white">Contas a Receber</a>
                     </li>
+                    <li class="mb-2">
+                        <a href="../categoriaDespesas/categorias_desp.html" class="text-gray-400 hover:text-white">Categorias de despesas</a>
+                    </li>
                 </ul>
             </li>
             <li class="mb-8 group">
-                <a class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
+                <a href="../agenda/tarefas.html" class="flex items-center py-2 px-4 hover:bg-gray-800 rounded-md">
                     <i class="ri-calendar-2-line mr-3"></i>
                     <span>Agenda</span>
                 </a>
