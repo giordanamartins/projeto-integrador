@@ -6,6 +6,8 @@ const processosController = require('../controllers/processosController');
 
 // A rota usa a função importada
 router.get('/', processosController.getProcessos);
+router.get('/gerar-contrato-texto/:id', processosController.gerarContratoTexto);
+router.get('/relatorio', processosController.relatorioProcessos);
 
 router.post('/', processosController.createProcesso);
 
