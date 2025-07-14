@@ -1,17 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
+
 const creceberController = require('../controllers/creceberController');
 
+
 router.get('/', creceberController.getContasReceber);
+
 router.get('/hoje', creceberController.getContasReceberHoje);
-router.get('/relatorio-areceber', creceberController.relatorioContasAReceber);
-router.get('/relatorio-recebimentos', creceberController.relatorioRecebimentos);
 
-router.post('/', creceberController.createContasReceber);
+router.post('/lancar-parcelas', creceberController.lancarParcelas);
 
-router.put('/', creceberController.updateContasReceber);
 
-router.delete('/', creceberController.deleteContasReceber);
+router.patch('/status', creceberController.updateStatusContasReceber);
+
+
 
 module.exports = router;

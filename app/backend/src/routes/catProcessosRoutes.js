@@ -25,7 +25,9 @@ router.delete('/', catProcessosController.deleteCatProcesso);
 
 // Rota para clonar uma categoria
 // POST /api/catProcessos/123/clone
-router.post('/:id/clone', catProcessosController.cloneCatProcesso);
+//router.post('/:id/clone', catProcessosController.cloneCatProcesso);
 
 
 module.exports = router;
+
+

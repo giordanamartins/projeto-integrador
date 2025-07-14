@@ -51,7 +51,7 @@ const carregaCatProc = async (termoBusca = '') => {
                         <td class="px-5 py-4">
                             <input type="checkbox" class="checkbox-categoria" data-id="${categoria.codigo}">
                         </td>
-                        <td class="px-6 py-4 font-medium whitespace-nowrap text-white">${categoria.nome || ''}</td>
+                        <td class="px-6 py-4 font-medium whitespace-nowrap text-white">${categoria.descricao || ''}</td>
                         <td class="px-6 py-4 font-medium whitespace-nowrap text-white">${categoria.descricao || ''}</td>
                     </tr>
                 `;

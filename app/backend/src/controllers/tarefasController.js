@@ -2,7 +2,7 @@ const db = require('../config/db');
 
 const getTarefas = async (req, res) => {
     try {
-        const query_tarefas = 'SELECT u.nome, t.descricao, t.data_hora FROM tarefas t JOIN usuarios u ON t.usuario_codigo = u.codigo ORDER BY t.data_hora ASC;';
+        const query_tarefas = 'SELECT u.nome, t.descricao, t.data_hora FROM tarefas t JOIN usuarios u ON t.usuario_codigo = u.codigo WHERE data_hora::date = CURRENT_DATE  ORDER BY t.data_hora ASC;';
 
         const { rows } = await db.query(query_tarefas);
         res.status(200).json(rows);

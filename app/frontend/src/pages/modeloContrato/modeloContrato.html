@@ -18,10 +18,13 @@
     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
         <div class="botoes py-2 px-3 flex-col justify-center items-center">
             <div id="bt_add" class="flex justify-center">
-                <button id="btn-incluir" class="cursor-pointer px-9 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold hover:bg-gray-800">+ Incluir Modelo</button>
+                <a href="index.html">
+                    <button id="btn-incluir" class="cursor-pointer px-9 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold hover:bg-gray-800">+ Incluir Modelo</button>
+                </a>
+                
             </div>
             <div id="bt_del" class="flex justify-center mt-2.5">
-                <button id="btn-excluir" class="cursor-pointer flex items-center bg-[#942023] px-15 py-3 rounded-full text-[19px] hover:bg-[#450a0a] text-white font-bold">
+                <button id="bt_excluir" class="cursor-pointer flex items-center bg-[#942023] px-15 py-3 rounded-full text-[19px] hover:bg-[#450a0a] text-white font-bold">
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
                 </button>
             </div>
@@ -50,7 +53,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="modeloContrato.js"></script>
-    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script src="../sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

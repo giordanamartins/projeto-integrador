@@ -7,6 +7,7 @@ const getCatProcesso = async (req, res) => {
         const values = [];
 
         if (busca) {
+            // Busca tanto no nome quanto na descrição
             queryText += ' WHERE nome ILIKE $1 OR descricao ILIKE $1';
             values.push(`%${busca}%`);
         }
@@ -21,6 +22,7 @@ const getCatProcesso = async (req, res) => {
         res.status(500).json({ message: "Erro interno do servidor." });
     }
 };
+
 
 const getCatProcessoById = async (req, res) => {
     const { id } = req.params;
@@ -39,31 +41,39 @@ const getCatProcessoById = async (req, res) => {
 const createCatProcesso = async (req, res) => {
     const { nome, descricao } = req.body;
 
-    if (!nome || !descricao) {
-        return res.status(400).json({ message: 'Os campos "nome" e "descrição" são obrigatórios.' });
+    if (!nome || typeof nome !== 'string' || nome.trim() === '') {
+    return res.status(400).json({ message: 'Campo "nome" é obrigatório.' });
+    }
+
+    if (!descricao || typeof descricao !== 'string' || descricao.trim() === '') {
+        return res.status(400).json({ message: 'Campo "descrição" é obrigatório.' });
     }
 
     try {
         const queryText = 'INSERT INTO categorias_processo (nome, descricao) VALUES ($1, $2) RETURNING *';
-        const { rows } = await db.query(queryText, [nome, descricao]);
-        res.status(201).json({ message: 'Categoria de processo criada com sucesso!', categoria: rows[0] });
-    } catch (error) {
-        console.error('Erro ao inserir categoria de processo:', error);
+        const values = [nome, descricao];
+    
+        const { rows } = await db.query(queryText, values);
+        
+        res.status(201).json({ message: 'Categoria criada com sucesso!', categoria: rows[0] });
+    } 
+    catch (err) {
+        console.error('Erro ao inserir categoria:', error);
         res.status(500).json({ message: 'Erro interno do servidor.' });
     }
-};
+}
 
 const updateCatProcesso = async (req, res) => {
     const { id } = req.params;
-    // CORREÇÃO: Pegando nome e descricao do req.body de uma só vez
-    const { nome, descricao } = req.body;
+    const { nome } = req.body;
+    const { descricao } = req.body;
 
-    if (!nome || !descricao) {
-        return res.status(400).json({ message: 'Os campos "nome" e "descrição" são obrigatórios.' });
+    if (!descricao || !nome || typeof descricao !== 'string' || descricao.trim() === '') {
+        return res.status(400).json({ message: 'O campo "descricao" e "nome" são obrigatórios.' });
     }
 
     try {
-        const queryText = 'UPDATE categorias_processo SET nome = $1, descricao = $2 WHERE codigo = $3 RETURNING *';
+        const queryText = 'UPDATE categorias_processo SET nome = $1, descricao = $2 WHERE codigo = $3 RETURNING *;';
         const { rows, rowCount } = await db.query(queryText, [nome, descricao, id]);
 
         if (rowCount === 0) {
@@ -71,26 +81,44 @@ const updateCatProcesso = async (req, res) => {
         }
         
         res.status(200).json({ message: 'Categoria atualizada com sucesso!', categoria: rows[0] });
-    } catch (error) {
-        console.error('Erro ao atualizar categoria de processo:', error);
+    } 
+    catch (error) {
+        console.error('Erro ao atualizar categoria:', error);
         res.status(500).json({ message: 'Erro interno do servidor.' });
     }
 };
 
 const deleteCatProcesso = async (req, res) => {
-    // ... seu código de delete ...
-};
+    const {ids} = req.body;
 
-const cloneCatProcesso = async (req, res) => {
-    // ... seu código de clone ...
-};
+    if (!ids || ids.length === 0) {
+        return res.status(400).json({ message: 'Nenhum ID de categoria foi fornecido para exclusão.' });
+    }
+    const idInt = ids.map(id => parseInt(id, 10));
 
-// CORREÇÃO: Exportando a função getCatProcessoById que estava faltando
+  //converte o array para inteiro, para poder tirar do banco
+    console.log("Array convertido para inteiros:", idInt);
+
+    try {
+        // Query SQL para deletar múltiplos registros usando ANY.
+        // Ele deletará todas as linhas onde 'idc' for igual a qualquer valor no array $1.
+        const queryText = 'DELETE FROM categorias_processo WHERE codigo = ANY($1::int[])';
+        
+        const result = await db.query(queryText, [idInt]);
+    
+        // result.rowCount contém o número de linhas que foram deletadas
+        res.status(200).json({ message: `${result.rowCount} categorias(s) excluída(s) com sucesso.` });
+        } 
+        catch (error) {
+            console.error('Erro ao excluir categoria:', error);
+            res.status(500).json({ message: 'Erro interno do servidor.' });
+        }
+}
+
 module.exports = {
     getCatProcesso,
     getCatProcessoById,
     createCatProcesso,
     updateCatProcesso,
-    deleteCatProcesso,
-    cloneCatProcesso
+    deleteCatProcesso
 };

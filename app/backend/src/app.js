@@ -82,6 +82,7 @@ app.use('/api/contasReceber', isAuthenticated, creceberRoutes);
 app.use('/api/processos', isAuthenticated, processosRoutes);
 app.use('/api/tarefas', isAuthenticated, tarefasRoutes);
 app.use('/api/usuarios', isAuthenticated, usuarioRoutes);
+app.use('/api/modelos', isAuthenticated, modelosRoutes);
 
 
 // Iniciar o servidor

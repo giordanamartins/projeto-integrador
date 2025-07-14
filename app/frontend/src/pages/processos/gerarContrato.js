@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await axios.get(`${apiUrl}/${processoId}/contrato`);
             const textoContrato = response.data.contrato;
-            console.log(textoContrato);
+            console.log(textoContrato)
 
             tituloEl.textContent = `Contrato Gerado para o Processo #${processoId}`;
             textareaEl.value = textoContrato;

@@ -3,59 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Processos</title>
 </head>
-<body class="font-[inter] bg-[#222222] ">
+<body class="font-[inter] bg-[#222222]">
+    
     <div id="sidebar-placeholder"></div>
 
     <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
-    <div class="botoes py-2 px-3 flex-col justify-center items-center">
-            <div id="bt_add" class="flex justify-center">
+        <div class="botoes py-2 px-3 flex-col justify-center items-center">
+            <div class="flex justify-center">
                 <a href="index.html">
                     <button class="cursor-pointer px-8 py-3.5 bg-[#2563eb] rounded-full text-[17px] text-white font-bold">+ Incluir Processo</button>
                 </a>
-                
             </div>
-            <div id="bt_del" class="flex justify-center mt-2.5">
-                <button class="flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] text-white font-bold">
+            <div class="flex justify-center mt-2.5">
+                <button id="bt_excluir" class="cursor-pointer flex items-center bg-[#942023] px-16 py-3 rounded-full text-[19px] text-white font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
-                </button>
-            </div>
-            <div id="bt_ok" class="flex justify-center mt-2.5">
-                <button class="flex items-center px-13 py-3 bg-[#15803d] rounded-full text-[19px] text-white font-bold">
-                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
                 </button>
             </div>
         </div>
         <div class="mt-20 registros font-bold text-center">
             <span class="text-red-500">Quantidade de processos: </span>
-            <div id="qtdReg" class="text-white">
-            </div>
+            <div id="qtdReg" class="text-white"></div>
         </div>
     </div>
 
-    <div class="content ml-84  min-h-screen p-4 ">
-        <div class="headercontent flex flex-wrap px-20 pt-10 mr-20">
-            <span class=" font-bold text-white text-[35px] ">Processos</span>
-            <div class="w=64 flex-auto"></div>
+    <div class="content ml-64 min-h-screen p-4">
+        <div class="headercontent flex flex-wrap px-20 pt-10 mr-80">
+            <span class="font-bold text-white text-[35px]">Processos</span>
         </div>
-        <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
-            <ion-icon name="search-outline" class="px-3"></ion-icon>
-            <input type="text" class="w-full">
+        <div class="searchbar bg-white mx-20 mt-7 mb-6 rounded-lg flex items-center mr-80">
+            <ion-icon name="search-outline" class="px-3 text-black"></ion-icon>
+            <input id="search" type="text" class="w-full p-2 rounded-lg" placeholder="Pesquisar por descrição ou nome do cliente...">
         </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+        
+        <!-- O container onde a tabela será injetada -->
+        <div id="tabelaProcessos" class="row mx-20 mr-80"></div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/index.js"></script>
-    <script src="../sidebar/sidebarLoader.js"></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
+    <script src="processos.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

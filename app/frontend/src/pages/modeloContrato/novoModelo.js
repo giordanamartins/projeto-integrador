@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     alert('Modelo de contrato salvo com sucesso!');
                     textarea.value = '';
                     setTimeout(() => {
-                        window.location.href = '/modeloContrato/modeloContrato.html';
+                        window.location.href = '/modeloContrato/modeloContrato.hj.html';
                     }, 2000);
                 } else {
                     alert(response.data?.error || 'Erro ao salvar modelo.');

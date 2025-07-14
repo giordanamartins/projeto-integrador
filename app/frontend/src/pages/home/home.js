@@ -21,36 +21,23 @@ const dataLoad = async () => {
         
         if (qtdPag) qtdPag.innerText = contasPagar.length;
         if (totPag) totPag.innerText = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(totalPagar);
+
+        if (contasPagar.length == 0) {
+        qtdPag.innerHTML = `0`;
+        totPag.innerHTML = `00,00`;
+        }
+        if (contasReceber.length == 0) {
+        qtdRec.innerHTML = `0`;
+        totRec.innerHTML = `00,00`;
+        }
      } catch (error) {
         console.error('Erro ao carregar resumo financeiro:', error);
 
-        if (totRecEl) totRecEl.innerText = 'Erro';
-        if (totPagEl) totPagEl.innerText = 'Erro'; 
+        if (totRec) totRec.innerText = 'Erro';
+        if (totPag) totPag.innerText = 'Erro'; 
     }
     
-    console.log(totalHJr);
-    
-    if (contaRec.length == 0) {
-        qtdRec.innerHTML = `0`;
-        totRec.innerHTML = `00,00`;
-    } else{
-        qtdRec.innerHTML = `${contaRec.length}`;
-        totRec.innerHTML = `${totalHJr}`;
-    }
-
-
-    const responsep = await axios.get('/api/contasPagar/hoje');
-    const contaPag = responsep.data;
-    const totalHJp = contaPag.reduce((somap, contap) => somap + contap.totalp, 0);
-    console.log(contaPag);
-    
-    if (contaPag.length == 0) {
-        qtdPag.innerHTML = `0`;
-        totPag.innerHTML = `00,00`;
-    } else{
-        qtdPag.innerHTML = `${contaPag.length}`;
-        totPag.innerHTML = `${totalHJp}`;
-    }
-}
+};
+dataLoad();
 
 
