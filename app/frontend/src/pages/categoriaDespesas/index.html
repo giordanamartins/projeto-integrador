@@ -31,7 +31,7 @@
 
     <div class="flex flex-wrap gap-4">
         <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
-        <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]" onclick="window.location.href='categorias_desp.html'">Cancelar</button>
+        <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]" onclick="history.back()">Cancelar</button>
     </div>
     </form>
 </div>
@@ -39,7 +39,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="novaCatD.js"></script>
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+<script src="/sidebar/sidebarLoader.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         loadSidebar();

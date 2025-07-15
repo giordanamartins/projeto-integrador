@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Chama as funções para popular todos os menus suspensos
+
     popularSelect('cliente_codigo', '/api/clientes', 'codigo', 'nome', 'cliente');
     popularSelect('usuario_codigo', '/api/usuarios/advogados', 'codigo', 'nome', 'advogado');
     popularSelect('categoria_codigo', '/api/catProcessos', 'codigo', 'nome', 'categoria');
     
-    // **Atenção:** Você precisará criar o backend para a rota '/api/modelosContratos' para que esta linha funcione
+
     popularSelect('modelo_contrato_codigo', '/api/modelos', 'codigo', 'nome', 'modelo');
 
     const formProcesso = document.getElementById('form-novo-processo');
@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
             submitButton.disabled = true;
             submitButton.textContent = 'Salvando...';
 
-            // Coleta os dados dos campos do formulário
+
             const dadosProcesso = {
-                // Seu SQL não tem 'numero_processo', então foi removido
+
                 descricao: document.getElementById('descricao').value,
                 comentarios: document.getElementById('comentarios').value,
                 cliente_codigo: document.getElementById('cliente_codigo').value,
@@ -29,16 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
             };
 
             try {
-                // Envia os dados para a API de processos
+
                 const response = await axios.post('/api/processos', dadosProcesso);
                 alert(response.data.message);
                 formProcesso.reset();
+                window.location.href = 'processos.html';
             } catch (error) {
                 const msgErro = error.response ? error.response.data.message : 'Falha ao criar processo.';
                 alert(msgErro);
                 console.error('Erro ao criar processo:', error);
             } finally {
-                // Reabilita o botão após a operação
+
                 submitButton.disabled = false;
                 submitButton.textContent = 'Salvar Processo';
             }
@@ -70,7 +71,7 @@ async function popularSelect(elementId, apiUrl, valueField, textField, selectNam
         items.forEach(item => {
             const option = document.createElement('option');
             option.value = item[valueField];
-            // CORREÇÃO: Adicionado um fallback para o texto, caso a propriedade não exista
+
             option.textContent = item[textField] || `Item #${item[valueField]}`;
             selectElement.appendChild(option);
         });

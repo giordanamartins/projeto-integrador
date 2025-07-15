@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+<body class="font-[inter] bg-[#222222] text-white p-6">
+<div id="sidebar-placeholder"></div>
+
+    <!-- form -->
+    <div class="ml-64 p-6">
+        <form id="form-processo" class="bg-[#3f3f46] text-white p-6 rounded-xl shadow-lg max-w-6xl mx-auto space-y-6">
+            <h1 class="text-2xl font-bold mb-4">Cadastro de Processo</h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex flex-col">
+                    <label for="cliente_codigo" class="mb-1">Cliente*</label>
+                    <!-- CORREÇÃO: ID para o select de cliente -->
+                    <select id="cliente_codigo" class="p-2 rounded bg-[#222222] text-white" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <label for="usuario_codigo" class="mb-1">Advogado Responsável*</label>
+                    <!-- CORREÇÃO: ID para o select de advogado -->
+                    <select id="usuario_codigo" class="p-2 rounded bg-[#222222] text-white" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+                <div class="flex flex-col">
+                    <label for="categoria_codigo" class="mb-1">Categoria do Processo*</label>
+                    <!-- CORREÇÃO: ID para o select de categoria -->
+                    <select id="categoria_codigo" class="p-2 rounded bg-[#222222] text-white" required>
+                        <option value="">Carregando...</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="flex flex-col">
+                <label for="modelo_contrato_codigo" class="mb-1">Modelo de Contrato*</label>
+                <select id="modelo_contrato_codigo" class="p-2 rounded bg-[#222222] text-white" required>
+                    <option value="">Carregando...</option>
+                </select>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="descricao" class="mb-1">Descrição do Processo</label>
+                <textarea id="descricao" rows="3" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Ex: Ação de indenização por danos morais..."></textarea>
+            </div>
+
+            <div class="flex flex-col">
+                <label for="comentarios" class="mb-1">Comentários Adicionais</label>
+                <textarea id="comentarios" rows="4" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Adicione observações ou informações relevantes..."></textarea>
+            </div>
+
+            <div class="flex gap-4">
+                <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar Processo</button>
+                <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]" onclick="history.back()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="editar.js"></script>
+<script src="/sidebar/sidebarLoader.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadSidebar();
+    });
+</script>
+</body>
+</html>

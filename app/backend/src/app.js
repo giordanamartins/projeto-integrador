@@ -10,7 +10,7 @@ const db = require('./config/db');
 const initializePassport = require('./config/passport-cfg');
 initializePassport(passport);
 
-// O require das rotas vem primeiro
+// require das rotas
 const catDespesaRoutes = require('./routes/catDespesaRoutes');
 const catProcessosRoutes = require('./routes/catProcessosRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
@@ -90,3 +90,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor está rodando na porta ${PORT}.`);
 });
+//

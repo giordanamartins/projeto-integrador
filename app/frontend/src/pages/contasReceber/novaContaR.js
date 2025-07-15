@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     let descricaoBase = ''; // Guardará a descrição base do processo
 
-    // Elementos do formulário
+
     const valorTotalInput = document.getElementById('valor_total');
     const dataInicialInput = document.getElementById('data_primeiro_vencimento');
     const periodicidadeSelect = document.getElementById('periodicidade');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
      */
     const carregarDadosDoProcesso = async () => {
         try {
-            // Chama a rota que busca os dados específicos para o lançamento
+
             const response = await axios.get(`/api/processos/${processoId}/dados-lancamento`);
             const processo = response.data;
             document.getElementById('processo_info').value = `Processo #${processo.codigo} - Cliente: ${processo.cliente_nome}`;
@@ -65,12 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
         previaContainer.innerHTML = previaHTML;
     };
 
-    // Adiciona "escutadores" para atualizar a prévia em tempo real
+
     [valorTotalInput, dataInicialInput, periodicidadeSelect, parcelasInput].forEach(el => {
         el.addEventListener('input', atualizarPrevia);
     });
 
-    // Lógica de envio do formulário
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
         
@@ -86,12 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await axios.post('/api/contasReceber/lancar-parcelas', dadosLancamento);
             alert(response.data.message);
-            window.location.href = '/processos/processos.html'; // Volta para a lista de processos
+            window.location.href = '/processos/processos.html';
         } catch (error) {
             alert(error.response?.data?.message || 'Falha ao lançar contas.');
         }
     });
 
-    // Carrega os dados iniciais do processo
+
     carregarDadosDoProcesso();
 });

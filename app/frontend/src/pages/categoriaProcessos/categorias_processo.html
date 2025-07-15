@@ -26,8 +26,10 @@
             </div>
         </div>
     <div id="tools" class="border-t border-t-gray-600 mt-10 text-white text-center m-5 p-3">
-            <ion-icon name="copy-outline"></ion-icon>
-            <span class="p-1">Clonar Categoria</span>
+        <button id="bt_clonar" class="flex items-center py-3 px-10  rounded-full text-[19px] text-white font-bold">
+            <ion-icon class="mr-2" name="copy-outline"></ion-icon> Clonar
+        </button>
+            
         </div>
         <div class="mt-20 registros font-bold text-center">
             <span class="text-red-500">Quantidade de categorias: </span>
@@ -52,7 +54,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="categorias_processo.js"></script>
-    <script src="../sidebar/sidebarLoader.js"></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

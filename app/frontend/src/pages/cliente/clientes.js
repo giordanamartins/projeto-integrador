@@ -2,10 +2,10 @@ let idsSelecionados = [];
 const apiUrl = '/api/clientes';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Carrega a tabela assim que a página estiver pronta
+
     carregaTable();
 
-    // Configura o "escutador" para a barra de pesquisa
+
     const search = document.getElementById('search');
     let digita;
 
@@ -27,7 +27,7 @@ const carregaTable = async (termoBusca = '') => {
     const containerTabela = document.getElementById('tabelaClis');
     const qtdRegElement = document.getElementById('qtdReg');
 
-    // Validação para garantir que os elementos existem no HTML
+
     if (!containerTabela) {
         console.error('Erro: Elemento com id "tabelaClis" não foi encontrado no HTML.');
         return;
@@ -140,7 +140,7 @@ function updateSelecionados(){
         
         if (confirm(`Tem certeza que deseja excluir ${idsSelecionados.length} cliente(s)?`)) {
             try {
-                // Envia a requisição DELETE para o backend, passando os IDs no corpo
+
                 const response = await axios.delete('/api/clientes', {
                     data: { ids: idsSelecionados }
                 });

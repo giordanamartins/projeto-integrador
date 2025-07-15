@@ -1,7 +1,7 @@
 let idsSelecionados = [];
 const apiUrl = '/api/modelos';
 
-// Função principal que é chamada quando a página carrega
+
 document.addEventListener('DOMContentLoaded', () => {
     carregaModelos();
     setupEventListenersGlobais();
@@ -148,7 +148,7 @@ function setupEventListenersTabela() {
         linha.addEventListener('click', (event) => {
             if (event.target.type === 'checkbox') return;
             const modeloId = linha.dataset.id;
-            // window.location.href = `editar.html?id=${modeloId}`; // Descomente quando criar a tela de edição
+
         });
     });
 }

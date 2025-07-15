@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. LÓGICA PARA ENVIAR O FORMULÁRIO
+
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             email,
             senha,
             tipo_usuario,
-            // Envia o número da OAB apenas se o campo estiver visível
+
             numero_oab: tipo_usuario === 'A' ? numero_oab : null
         };
 
@@ -35,9 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await axios.post('/api/usuarios', novoUsuario);
             alert(response.data.message);
             form.reset();
+            window.location.href = 'usuarios.html';
             campoOAB.style.display = 'none'; // Esconde o campo OAB após o reset
         } catch (error) {
-            // Pega a mensagem de erro específica do backend
+
             const mensagemErro = error.response ? error.response.data.message : 'Falha ao criar usuário.';
             alert(mensagemErro);
             console.error('Erro ao criar usuário:', error);

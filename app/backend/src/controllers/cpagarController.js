@@ -21,11 +21,15 @@ const getContasPagar = async (req, res) => {
 
 const getContasPagarHoje = async (req, res) => {
     try{
-        const query_cpagar = 'SELECT cp.valor, cp.data_vencimento, cp.status, cp.descricao, cd.descricao FROM a_pagar cp JOIN categorias_despesa cd on cp.categoria_codigo = cd.codigo WHERE data_vencimento = CURRENT_DATE ORDER BY cp.data_vencimento ASC;';
+
+        const query_cpagar = `
+            SELECT valor 
+            FROM a_pagar 
+            WHERE data_vencimento = CURRENT_DATE;
+        `;
         const { rows } = await db.query(query_cpagar);
         res.status(200).json(rows);
-    }
-    catch (error) {
+    } catch (error) {
         console.error('Erro ao buscar contas a pagar do dia:', error);
         res.status(500).json({ message: "Erro interno do servidor." });
     }
@@ -151,7 +155,11 @@ const relatorioContasAPagar = async (req, res) => {
 
 const relatorioPagamentos = async (req, res) => {
     try {
-        const query = "SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao, a.valor FROM a_pagar a JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo WHERE a.status = 'A' ORDER BY a.data_vencimento;";
+        const query = `SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao AS categoria_descricao, a.valor 
+               FROM a_pagar a 
+               JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo 
+               WHERE a.status = 'B' 
+               ORDER BY a.data_vencimento;`;
         const { rows } = await db.query(query);
         res.status(200).json(rows);
     } 

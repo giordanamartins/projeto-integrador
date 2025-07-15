@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const carregarUsuarioLogado = async () => {
         try {
-            // A rota '/api/auth/status' já nos dá os dados do usuário logado
+
             const response = await axios.get('/api/auth/status');
             
             if (response.data.loggedIn && response.data.user) {
-                // Preenche o campo de usuário com o nome e o deixa readonly
+
                 campoUsuarioNome.value = response.data.user.nome;
             } else {
-                // Se por algum motivo não encontrar o usuário, exibe um erro
+
                 campoUsuarioNome.value = 'Usuário não encontrado';
             }
         } catch (error) {

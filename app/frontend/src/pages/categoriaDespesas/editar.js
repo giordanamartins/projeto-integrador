@@ -1,11 +1,11 @@
-// A lógica inteira agora espera o HTML carregar completamente
+
 document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = '/api/catDespesas';
     const form = document.getElementById('form_categoria');
     const urlParams = new URLSearchParams(window.location.search);
     const catId = urlParams.get('id');
 
-    // Verificação para garantir que o formulário foi encontrado
+
     if (!form) {
         console.error('ERRO CRÍTICO: Formulário com id="form_categoria" não foi encontrado no HTML.');
         return;
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await axios.get(`${apiUrl}/${catId}`);
             const categoria = response.data;
 
-            // Preenche o campo de descrição
+
             document.getElementById('descricao').value = categoria.descricao || '';
         } catch (error) {
             console.error("Erro ao carregar dados da categoria:", error);
@@ -62,6 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Chama a função para carregar os dados iniciais
+
     carregarDadosCat();
 });

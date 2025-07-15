@@ -1,22 +1,31 @@
-const apiUrl = '/api/clientes';
 
+document.addEventListener('DOMContentLoaded', () => {
+    const apiUrl = '/api/clientes';
     const form = document.getElementById('form_cliente');
-
+    
     const urlParams = new URLSearchParams(window.location.search);
     const clienteId = urlParams.get('id');
 
-    if (!clienteId){
-        alert('ID do cliente não encontrado na URL');
+    if (!form) {
+        console.error('ERRO CRÍTICO: Formulário com id="form_cliente" não foi encontrado no HTML.');
+        return;
+    }
+
+    if (!clienteId) {
+        alert('ID do cliente não encontrado na URL!');
         window.location.href = 'clientes.html';
         return;
     }
 
+    /**
+     * Busca os dados do cliente e preenche o formulário.
+     */
     const carregarDadosCliente = async () => {
         try {
             const response = await axios.get(`${apiUrl}/${clienteId}`);
             const cliente = response.data;
 
-            // Preenche cada campo do formulário com os dados recebidos
+
             document.getElementById('nome').value = cliente.nome || '';
             document.getElementById('cpf_cnpj').value = cliente.cpf_cnpj || '';
             document.getElementById('email').value = cliente.email || '';
@@ -31,30 +40,34 @@ const apiUrl = '/api/clientes';
             document.getElementById('numero').value = cliente.endereco_numero || '';
             document.getElementById('complemento').value = cliente.endereco_complemento || '';
 
+
             if (cliente.data_nascimento) {
                 document.getElementById('data_nascimento').value = new Date(cliente.data_nascimento).toISOString().split('T')[0];
             }
-        }catch(error){
+        } catch (error) {
             console.error('Erro ao buscar dados do cliente:', error);
             alert('Não foi possível carregar os dados do cliente.');
         }
     };
 
-    form.addEventListener('submit', async (event)=>{
+    /**
+     * Adiciona o "escutador" para o envio do formulário.
+     */
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const submitButton = form.querySelector('button[type="submit"]');
         submitButton.disabled = true;
         submitButton.textContent = 'Salvando...';
 
-        const updateDados = {
+        const dadosAtualizados = {
             nome: document.getElementById('nome').value,
             cpf_cnpj: document.getElementById('cpf_cnpj').value,
             email: document.getElementById('email').value,
             data_nascimento: document.getElementById('data_nascimento').value,
             tipo_pessoa: document.getElementById('tipo_pessoa').value,
             telefone1: document.getElementById('telefone1').value,
-            telefone2: document.getElementById('telefone2')?.value, // Supondo que exista um campo com id="telefone2"
+            telefone2: document.getElementById('telefone2')?.value, // Supondo que exista um campo
             comentario: document.getElementById('comentario').value,
             endereco_cep: document.getElementById('cep').value,
             endereco_uf: document.getElementById('uf').value,
@@ -63,37 +76,25 @@ const apiUrl = '/api/clientes';
             endereco_logradouro: document.getElementById('logradouro').value,
             endereco_numero: document.getElementById('numero').value,
             endereco_complemento: document.getElementById('complemento').value
-
         };
 
-        try{
-            const response = await axios.put(`${apiUrl}/${clienteId}`, updateDados);
-
-
+        try {
+            const response = await axios.put(`${apiUrl}/${clienteId}`, dadosAtualizados);
             alert(response.data.message);
             window.location.href = 'clientes.html';
-        }catch(error){
-            console.error("--- ERRO DETALHADO AO ATUALIZAR ---");
-            console.error("Objeto de erro completo:", error);
-
-            if (error.response) {
-                // O servidor respondeu com um status de erro
-                const mensagemErro = error.response.data.error || error.response.data.message || 'Ocorreu um erro no servidor.';
-                alert(`Erro: ${mensagemErro}`);
-            } else if (error.request) {
-                // A requisição foi feita mas não houve resposta
-                alert('Não foi possível se comunicar com o servidor. Verifique sua conexão.');
-            } else {
-                // Algo deu errado ao configurar a requisição
-                alert('Ocorreu um erro inesperado ao preparar a requisição.');
-            }
+        } catch (error) {
+            const mensagemErro = error.response ? error.response.data.error : 'Falha ao atualizar cliente.';
+            alert(`Erro: ${mensagemErro}`);
+            console.error("Erro ao atualizar cliente:", error);
             
-            // Reabilita o botão apenas se deu erro, para o usuário tentar novamente
             submitButton.disabled = false;
             submitButton.textContent = 'Salvar';
+            setTimeout(() => {
+                window.location.href = '/cliente/clientes.html';
+            }, 2000);
         }
-
-
     });
 
+
     carregarDadosCliente();
+});
