@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <title>Contas a Pagar</title>
+    <title>Contas a Receber</title>
 </head>
 <body class="font-[inter] bg-[#222222] text-white min-h-screen lg:pl-64">
 
@@ -30,32 +30,30 @@
             <input type="text" class="w-full bg-transparent outline-none" placeholder="Buscar conta...">
         </div>
 
-        <div id="tabelaCReceber" class="w-full"></div>
+        <div id="tabelaContasReceber" class="row"></div>
         </main>
 
         <aside class="w-full lg:w-64 bg-[#3f3f46] rounded-xl shadow-md p-4 h-fit">
             <div class="space-y-4">
 
-                <div id="bt_add" class="flex justify-center">
-                <button class="w-full py-3 bg-[#2563eb] rounded-full text-[17px] font-bold text-white hover:bg-blue-600 transition">+ Incluir Conta</button>
+                <div id="bt_receber" class="flex justify-center">
+                <button class="w-full py-3 bg-[#15803d] rounded-full text-[17px] font-bold text-white hover:bg-blue-600 transition">
+                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon>Baixar</button>
                 </div>
 
-                <div id="bt_del" class="flex justify-center">
-                <button class="w-full flex items-center justify-center bg-[#942023] py-3 rounded-full text-[17px] font-bold text-white hover:bg-red-700 transition">
+                <div id="bt_reabrir" class="flex justify-center">
+                <button class="w-full flex items-center justify-center bg-[#facc15] text-black py-3 rounded-full text-[17px] font-bold  hover:bg-red-700 transition">
+                    <ion-icon class="mr-2" name="arrow-up-circle-outline"></ion-icon>Reabrir
+                </button>
+                </div>
+
+                <div id="bt_cancelar" class="flex justify-center">
+                <button class="w-full flex items-center justify-center bg-black  py-3 rounded-full text-[17px] font-bold text-white hover:bg-green-700 transition">
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon>Excluir
                 </button>
                 </div>
 
-                <div id="bt_ok" class="flex justify-center">
-                <button class="w-full flex items-center justify-center bg-[#15803d] py-3 rounded-full text-[17px] font-bold text-white hover:bg-green-700 transition">
-                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon>Concluir
-                </button>
-                </div>
-
-                <div class="border-t border-gray-600 pt-4 text-white text-center flex items-center justify-center gap-2 cursor-pointer hover:text-gray-300 transition">
-                <ion-icon name="settings-outline" class="text-lg"></ion-icon>
-                <span>Ferramentas</span>
-                </div>
+            
 
                 <div class="mt-6 text-center font-bold">
                 <p class="text-red-500">Quantidade de contas:</p>
@@ -63,7 +61,9 @@
                 </div>
             </div>
         </aside>
+        
     </div>
+    <div id="tabelaContasReceber" class="row"></div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

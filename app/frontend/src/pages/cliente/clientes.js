@@ -42,7 +42,7 @@ const carregaTable = async (termoBusca = '') => {
         }
 
         let resultsTableHTML = `
-            <table id="resultsTable" class="table contentbox ml-10 mx-auto mt-11 text-white">
+            <table id="resultsTable" class="table contentbox ml-3 mx-auto mt-11 text-white">
                 <thead>
                     <tr class="py-5">
                         <th scope="col" class="px-5">

@@ -25,7 +25,7 @@ const carregaContasReceber = async (termoBusca = '') => {
         if (qtdRegElement) qtdRegElement.innerHTML = `<strong>${contas.length}</strong> Registros`;
 
         let tableHTML = `
-            <table class="w-[1080px] text-left text-white">
+            <table class="w-[900px] text-left text-white">
                 <thead>
                     <tr class="border-b border-gray-700">
                         <th class="p-4 w-12"><input type="checkbox" id="checkbox-all"></th>

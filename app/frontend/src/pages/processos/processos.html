@@ -41,7 +41,7 @@
                 </a>
             </div>
             <div class="flex justify-center mt-2.5">
-                <button id="bt_excluir" class="cursor-pointer flex items-center bg-[#942023] px-16 py-3 rounded-full text-[19px] text-white font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
+                <button id="bt_excluir" class="w-full cursor-pointer flex justify-center items-center bg-[#942023] px-16 py-3 rounded-full text-[19px] text-white font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
                 </button>
                 </div>
@@ -56,40 +56,27 @@
                 <p class="text-red-500">Quantidade de processos:</p>
                 <div id="qtdReg" class="mt-1 text-white"></div>
                 </div>
-
+            <div class="mt-20 p-8 flex flex-col space-y-4 justify-center font-bold text-center">
+                <span class="text-white">Alterar situação:</span>
+                <button id="aberto" class="text-black bg-[#fde047] rounded-full px-7">Em aberto</button>
+                <button id="andamento" class="text-black bg-[#1d4ed8] rounded-full px-7">Em andamento</button>
+                <button id="concluido" class="text-black bg-[#15803d] rounded-full px-7">Concluído</button>
+                <button id="cancelado" class="text-black bg-[#b91c1c] rounded-full px-7">Cancelado</button>
+        
+            
             </div>
+            </div>
+            
         </aside>
             </div>
         </div>
-        <div class="mt-20 registros font-bold text-center">
-            <span class="text-red-500">Quantidade de processos: </span>
-            <div id="qtdReg" class="text-white"></div>
-        </div>
 
-        <div class="mt-20 p-8 flex flex-col space-y-4 justify-center font-bold text-center">
-            <span class="text-white">Alterar situação:</span>
-            <button id="aberto" class="text-black bg-[#fde047] rounded-full px-7">Em aberto</button>
-            <button id="andamento" class="text-black bg-[#1d4ed8] rounded-full px-7">Em andamento</button>
-            <button id="concluido" class="text-black bg-[#15803d] rounded-full px-7">Concluído</button>
-            <button id="cancelado" class="text-black bg-[#b91c1c] rounded-full px-7">Cancelado</button>
         
-            
-
-        </div>
     </div>
 
-    <div class="content ml-64 min-h-screen p-4">
-        <div class="headercontent flex flex-wrap px-20 pt-10 mr-80">
-            <span class="font-bold text-white text-[35px]">Processos</span>
-        </div>
-        <div class="searchbar bg-white mx-20 mt-7 mb-6 rounded-lg flex items-center mr-80">
-            <ion-icon name="search-outline" class="px-3 text-black"></ion-icon>
-            <input id="search" type="text" class="w-full p-2 rounded-lg" placeholder="Pesquisar por descrição ou nome do cliente...">
-        </div>
         
         <!-- O container onde a tabela será injetada -->
         <div id="tabelaProcessos" class="row mx-20 mr-80"></div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/sidebar/sidebarLoader.js"></script>
