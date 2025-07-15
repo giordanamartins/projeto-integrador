@@ -1,8 +1,9 @@
-function loadSidebar(path = '/sidebar/sidebar.html') {
+function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
     fetch(path)
         .then(response => response.text())
         .then(html => {
-            document.getElementById('sidebar-placeholder').innerHTML = html;
+            const sidebarPlaceholder = document.getElementById('sidebar-placeholder');
+            sidebarPlaceholder.innerHTML = html;
 
             const financeiroToggle = document.getElementById('financeiro-toggle');
             const financeiroSubmenu = document.getElementById('financeiro-submenu');
@@ -15,7 +16,6 @@ function loadSidebar(path = '/sidebar/sidebar.html') {
                     financeiroArrow.classList.toggle('rotate-180');
                 });
             }
-
 
             const processoToggle = document.getElementById('processo-toggle');
             const processoSubmenu = document.getElementById('processo-submenu');
@@ -38,6 +38,28 @@ function loadSidebar(path = '/sidebar/sidebar.html') {
                     event.preventDefault();
                     relatoriosSubmenu.classList.toggle('hidden');
                     relatoriosArrow.classList.toggle('rotate-180');
+                });
+            }
+
+            const openBtn = document.getElementById('openSidebarBtn');
+
+            if (openBtn) {
+                let sidebarVisible = false;
+
+                openBtn.addEventListener('click', () => {
+                    sidebarVisible = !sidebarVisible;
+                    sidebarPlaceholder.style.display = sidebarVisible ? 'block' : 'none';
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (
+                        sidebarVisible &&
+                        !sidebarPlaceholder.contains(e.target) &&
+                        !openBtn.contains(e.target)
+                    ) {
+                        sidebarPlaceholder.style.display = 'none';
+                        sidebarVisible = false;
+                    }
                 });
             }
         })

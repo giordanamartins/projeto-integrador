@@ -1,58 +1,60 @@
 <!DOCTYPE html>
-<html lang="PT-BR">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    
     <title>Clientes</title>
 </head>
+<body class="font-[inter] bg-[#222222] text-white min-h-screen lg:pl-64">
 
-<body class="font-[inter] bg-[#222222] ">
-    <div id="sidebar-placeholder"></div>
-    
-    <div class="infos fixed right-20 top-15 bg-[#3f3f46] w-64 rounded-[1vw] h-full shadow-md">
-        <div class="botoes py-2 px-3 flex-col justify-center items-center">
-            <div href="index.html" id="bt_add" class="flex justify-center">
-                <a href="index.html">
-                    <button class="cursor-pointer px-9 py-3 bg-[#2563eb] rounded-full text-[19px] text-white font-bold hover:bg-gray-800">+ Incluir Cliente</button>
-                </a>
-                
-            </div>
-            <div id="bt_del" class="flex justify-center mt-2.5">
-                <button id="bt_excluir" class="cursor-pointer flex items-center bg-[#942023] px-15 py-3   rounded-full text-[19px] hover:bg-[#450a0a] text-white font-bold">
-                    <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
+    <div id="sidebar-placeholder" class="hidden lg:block fixed top-0 left-0 h-full w-64 z-40"></div>
+
+    <div class="flex flex-col lg:flex-row gap-6 px-4 py-6">
+        <div class="flex-1">
+            <header class="flex items-center gap-4 mb-6 px-2 md:px-10">
+                <button id="openSidebarBtn"
+                class="lg:hidden w-10 h-10 flex items-center justify-center bg-red-950 text-white rounded-full shadow-md focus:outline-none focus:ring-2 focus:ring-red-950 transition duration-300">
+                <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
                 </button>
+                <h1 class="text-[28px] md:text-[35px] font-bold">Clientes</h1>
+            </header>
+
+        <div class="bg-white text-black rounded-lg flex items-center px-4 py-2 mb-6 mx-2 md:mx-10 shadow-md max-w-4xl w-full">
+            <ion-icon name="search-outline" class="text-gray-600 mr-2"></ion-icon>
+            <input id="search" type="text" class="w-full bg-transparent outline-none" placeholder="Buscar cliente...">
+        </div>
+
+        <div id="tabelaClis" class="px-2 md:px-10"></div>
+        </div>
+
+        <div class="w-full lg:w-64 bg-[#3f3f46] rounded-xl shadow-md p-4">
+            <div class="space-y-4">
+
+                <div class="flex justify-center">
+                <a href="index.html" class="w-full">
+                    <button class="w-full py-3 bg-[#2563eb] rounded-full text-[17px] font-bold text-white hover:bg-gray-800">+ Incluir Cliente</button>
+                </a>
+                </div>
+
+                <div class="flex justify-center">
+                <button id="bt_excluir" class="w-full flex items-center justify-center bg-[#942023] py-3 rounded-full text-[17px] font-bold text-white hover:bg-[#450a0a]">
+                    <ion-icon name="trash-outline" class="mr-2"></ion-icon>Excluir
+                </button>
+                </div>
+
+                <div class="border-t border-gray-600 my-4"></div>
+
+                <div class="text-center font-bold">
+                <span class="text-red-500">Quantidade de clientes:</span>
+                <div id="qtdReg" class="mt-1"></div>
+                </div>
             </div>
-            
         </div>
-        <div class="mt-20 registros font-bold text-center">
-            <span class="text-red-500">Quantidade de clientes: </span>
-            <div id="qtdReg" class="text-white">
-            </div>
-        </div>
-    </div>
-
-    <div class="content ml-84  min-h-screen p-4 ">
-        <div class="headercontent flex flex-wrap px-20 pt-10 mr-20">
-            <span class=" font-bold text-white text-[35px] ">Clientes</span>
-            <div class="w=64 flex-auto"></div>
-            <!--<button class="bg-[#942023] rounded-full text-[20px] text-white font-bold w=10 px-8 mr-1">+ Incluir Cadastro</button>-->
-
-        </div>
-        <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
-            <ion-icon name="search-outline" class="px-3"></ion-icon>
-            <input id="search" type="text" class="w-full">
-        </div>
-
-        <div id="tabelaClis" class="row"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
@@ -61,7 +63,7 @@
     <script src="../sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            loadSidebar();
+        loadSidebar();
         });
     </script>
 </body>

@@ -1,49 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Cadastro Categoria de Despesa</title>
 </head>
-<body class="font-[inter] bg-[#222222] text-white p-6">
-<div id="sidebar-placeholder"></div>
+<body class="font-[inter] bg-[#222222] text-white min-h-screen p-6 lg:pl-64">
 
-<!-- form -->
-<div class="ml-64 p-6">
-    <form id="form_categoria" class="text-white bg-[#3f3f46] p-6 rounded-xl shadow-lg max-w-4xl mx-auto space-y-6">
-    <h1 class="text-2xl font-bold mb-4">Cadastro de Categoria de Despesa</h1>
+    <button id="openSidebarBtn" class="fixed top-4 left-4 z-50 w-10 h-10 flex items-center justify-center bg-red-950 text-white rounded-full lg:hidden shadow-md focus:outline-none focus:ring-2 focus:ring-red-950 transition duration-300"><ion-icon name="menu-outline" class="text-2xl"></ion-icon>
+    </button>
 
-    <div class="space-y-4">
+    <div id="sidebar-placeholder" class="hidden lg:block fixed top-0 left-0 h-full w-64 z-40"></div>
+
+    <main class="max-w-4xl mx-auto">
+        <form id="form_categoria" class="bg-[#3f3f46] p-6 rounded-xl shadow-lg space-y-6">
+        <h1 class="text-2xl font-bold mb-4">Cadastro de Categoria de Despesa</h1>
+
+        <div class="space-y-4">
+            <div class="flex flex-col gap-4">
+            <div class="flex flex-col w-full max-w-[6rem]">
+                <label class="mb-1">Código</label>
+                <input type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
+            </div>
+
+            <div class="flex flex-col w-full">
+                <label class="mb-1">Descrição*</label>
+                <textarea id="descricao" rows="4" class="p-2 rounded bg-[#222222] text-white resize-none w-full" placeholder="Informe a descrição da categoria de despesa" required></textarea>
+            </div>
+            </div>
+        </div>
+
         <div class="flex flex-wrap gap-4">
-        <div class="flex flex-col w-24">
-            <label class="mb-1">Código</label>
-            <input type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
+            <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700 transition">Salvar</button>
+            <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222] transition" onclick="window.location.href='categorias_desp.html'">Cancelar</button>
         </div>
+        </form>
+    </main>
 
-        <div class="flex flex-col w-full">
-            <label  class="mb-1">Descrição*</label>
-            <textarea id="descricao" rows="4" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Informe a descrição da categoria de despesa" required></textarea>
-        </div>
-    </div>
-    </div>
-
-    <div class="flex flex-wrap gap-4">
-        <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
-        <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]" onclick="window.location.href='categorias_desp.html'">Cancelar</button>
-    </div>
-    </form>
-</div>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="novaCatD.js"></script>
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="novaCatD.js"></script>
+    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
         loadSidebar();
-    });
-</script>
+        });
+    </script>
 </body>
 </html>

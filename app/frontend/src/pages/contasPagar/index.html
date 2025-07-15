@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <title>Contas a Pagar</title>
 </head>
 <body class="font-[inter] bg-[#222222] text-white p-6">
-<div id="sidebar-placeholder"></div>
 
-<!-- form -->
-<div class="ml-64 p-6">
-<form id="form_contas_pagar" class="bg-[#3f3f46] text-white p-6 rounded-xl shadow-lg max-w-5xl mx-auto space-y-6">
-    <h1 class="text-2xl font-bold mb-4">Contas a Pagar</h1>
+    <button id="openSidebarBtn" class="fixed top-4 left-4 z-50 w-10 h-10 flex items-center justify-center bg-red-950 text-white rounded-full lg:hidden shadow-md focus:outline-none focus:ring-2 focus:ring-red-950 transition duration-300">
+        <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
+    </button>
 
-    <div class="flex flex-wrap gap-x-4 gap-y-4">
-        <div class="flex flex-col w-24">
-            <label class="mb-1">Código</label>
-            <input type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
-        </div>
+    <div id="sidebar-placeholder" class="hidden lg:block fixed top-0 left-0 h-full w-64 z-40"></div>
 
-        <div class="flex flex-col flex-1 min-w-[200px]">
-            <label class="mb-1">Valor*</label>
-            <input id="valor" type="number" step="0.01" placeholder="R$ 0,00" class="p-2 rounded bg-[#222222] text-white" required />
-        </div>
+    <!-- form -->
+    <div class="ml-0 lg:ml-64 p-6">
+        <form id="form_contas_pagar" class="bg-[#3f3f46] text-white p-6 rounded-xl shadow-lg max-w-5xl mx-auto space-y-6">
+            <h1 class="text-2xl font-bold mb-4">Contas a Pagar</h1>
+
+            <div class="flex flex-wrap gap-x-4 gap-y-4">
+                <div class="flex flex-col w-24">
+                    <label class="mb-1">Código</label>
+                    <input type="text" class="p-2 rounded bg-[#222222] text-white" readonly />
+                </div>
+
+                <div class="flex flex-col flex-1 min-w-[200px]">
+                    <label class="mb-1">Valor*</label>
+                    <input id="valor" type="number" step="0.01" placeholder="R$ 0,00" class="p-2 rounded bg-[#222222] text-white" required />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="flex flex-col">
+                    <label class="mb-1">Data de Vencimento*</label>
+                    <input id="data_vencimento" type="date" class="p-2 rounded bg-[#222222] text-white" required />
+                </div>
+
+                <div class="flex flex-col">
+                    <label class="mb-1">Categoria*</label>
+                    <select id="categoria_codigo" class="p-2 rounded bg-[#222222] text-white" required>
+                    <!-- pendente integração front-back -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <label class="mb-1">Descrição</label>
+                <textarea id="descricao" rows="3" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Adicione uma descrição opcional..."></textarea>
+            </div>
+
+            <div class="flex gap-4">
+                <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
+                <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]" onclick="history.back()">Cancelar</button>
+            </div>
+        </form>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="flex flex-col">
-            <label class="mb-1">Data de Vencimento*</label>
-            <input id="data_vencimento" type="date" class="p-2 rounded bg-[#222222] text-white" required />
-        </div>
-
-        <div class="flex flex-col">
-            <label class="mb-1">Categoria*</label>
-            <select id="categoria_codigo" class="p-2 rounded bg-[#222222] text-white" required>
-            <!-- pendente integração front-back -->
-            </select>
-        </div>
-    </div>
-
-    <div class="flex flex-col">
-        <label class="mb-1">Descrição</label>
-        <textarea id="descricao" rows="3" class="p-2 rounded bg-[#222222] text-white resize-none" placeholder="Adicione uma descrição opcional..."></textarea>
-    </div>
-
-    <div class="flex gap-4">
-        <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
-        <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]" onclick="history.back()">Cancelar</button>
-    </div>
-</form>
-</div>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="novaContaP.js" defer></script>
 <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
@@ -60,5 +68,6 @@
         loadSidebar();
     });
 </script>
+
 </body>
 </html>

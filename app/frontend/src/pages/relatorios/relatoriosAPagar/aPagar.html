@@ -6,30 +6,38 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Relatório - Contas a Pagar</title>
 </head>
 <body class="font-[Inter] bg-[#1e1e1e] text-white">
-    <div id="sidebar-placeholder"></div>
+    <button id="openSidebarBtn" class="fixed top-4 left-4 z-50 w-10 h-10 flex items-center justify-center bg-red-950 text-white rounded-full lg:hidden shadow-md focus:outline-none focus:ring-2 focus:ring-red-950 transition duration-300">
+        <ion-icon name="menu-outline" class="text-2xl"></ion-icon>
+    </button>
 
-    <div class="content ml-84 min-h-screen p-10">
+    <div id="sidebar-placeholder" class="hidden lg:block fixed top-0 left-0 h-full w-64 z-40"></div>
+
+    <div class="content ml-0 lg:ml-84 min-h-screen p-10">
         <header class="flex justify-between items-start mb-10">
-        <div>
-            <h1 class="text-4xl font-bold">Relatório: Contas a Pagar</h1>
-            <p class="text-gray-400 text-sm mt-1" id="dataRelatorio"></p>
-            <p class="text-gray-300 font-semibold mt-3">Quantidade de contas: <span id="qtdReg">0</span></p>
-        </div>
-        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium mt-2">
-            <i class="ri-printer-line mr-2"></i> Imprimir
-        </button>
-    </header>
+            <div>
+                <h1 class="text-4xl font-bold">Relatório: Contas a Pagar</h1>
+                <p class="text-gray-400 text-sm mt-1" id="dataRelatorio"></p>
+                <p class="text-gray-300 font-semibold mt-3">Quantidade de contas: <span id="qtdReg">0</span></p>
+            </div>
+            <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-medium mt-2">
+                <i class="ri-printer-line mr-2"></i> Imprimir
+            </button>
+        </header>
         <div id="tabelaCPagar" class="overflow-x-auto bg-[#2e2e2e] rounded-lg shadow-lg"></div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/app/frontend/src/pages/relatorios/relatoriosAPagar/aPagar.js"></script>
     <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-        loadSidebar();
+            loadSidebar();
         });
     </script>
 </body>
+</html>
