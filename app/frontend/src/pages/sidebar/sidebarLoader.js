@@ -1,4 +1,4 @@
-function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
+function loadSidebar(path = '/sidebar/sidebar.html') {
     fetch(path)
         .then(response => response.text())
         .then(html => {
@@ -16,6 +16,8 @@ function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
                     financeiroArrow.classList.toggle('rotate-180');
                 });
             }
+
+            carregaUser();
 
             const processoToggle = document.getElementById('processo-toggle');
             const processoSubmenu = document.getElementById('processo-submenu');
@@ -66,4 +68,49 @@ function loadSidebar(path = '/app/frontend/src/pages/sidebar/sidebar.html') {
         .catch(error => {
             console.error('Erro ao carregar sidebar:', error);
         });
+}
+
+async function carregaUser(){
+    const user = document.getElementById('user');
+    const cargo = document.getElementById('cargo');
+
+    try {
+      
+        const response = await axios.get('/api/auth/status')
+        
+        if (response.data.loggedIn && response.data.user) {
+            const usuario = response.data.user;
+            
+            user.textContent = usuario.nome || 'Usuário';
+
+         
+            let cargoTexto = 'Cargo Desconhecido';
+            if (usuario.tipo_usuario === 'A') {
+                cargoTexto = 'Advogado';
+            } else if (usuario.tipo_usuario === 'J') {
+                cargoTexto = 'Assessor';
+            }
+            
+            cargo.textContent = cargoTexto;
+
+            if (usuario.tipo_usuario === 'J') { 
+                const financeiroMenuItem = document.getElementById('financeiro-toggle');
+                if (financeiroMenuItem) {
+                    
+                    financeiroMenuItem.parentElement.style.display = 'none';
+                }
+            }
+
+        } else {
+
+            nomeUsuarioEl.textContent = 'Visitante';
+            cargoUsuarioEl.textContent = 'Não autenticado';
+        }
+    } catch (error) {
+        console.error('Erro ao buscar dados do usuário:', error);
+        nomeUsuarioEl.textContent = 'Erro';
+        cargoUsuarioEl.textContent = 'Não foi possível carregar';
+    }
+
+    ;
 }

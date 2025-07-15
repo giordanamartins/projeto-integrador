@@ -1,19 +1,19 @@
-// A lógica inteira agora espera o HTML carregar completamente
+
 document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = '/api/catProcessos';
-    // Usando o ID correto do formulário do seu HTML
+
     const form = document.getElementById('form_processo');
     
     const urlParams = new URLSearchParams(window.location.search);
     const catId = urlParams.get('id');
 
-    // Verificação para garantir que o formulário foi encontrado
+
     if (!form) {
         console.error('ERRO CRÍTICO: Formulário com id="form_processo" não foi encontrado no HTML.');
         return; // Este 'return' é VÁLIDO porque está dentro da função do 'DOMContentLoaded'
     }
 
-    // Verificação do ID da categoria na URL
+
     if (!catId) {
         alert('ID da categoria não encontrado na URL.');
         window.location.href = 'categorias_processo.html'; // Corrigido o nome do arquivo
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await axios.get(`${apiUrl}/${catId}`);
             const categoria = response.data;
 
-            // Preenche o código e a descrição
+
             document.getElementById('codigo').value = categoria.codigo || '';
             document.getElementById('nome').value = categoria.nome || '';
             document.getElementById('descricao').value = categoria.descricao || '';
@@ -68,6 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Chama a função para carregar os dados iniciais
+
     carregarDadosCat();
 });

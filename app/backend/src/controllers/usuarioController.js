@@ -1,11 +1,36 @@
 const db = require('../config/db');
 const bcrypt = require('bcrypt');
 
+const getUsuarios = async (req, res) => {
+    try {
+        const queryText = "SELECT codigo, nome, email, tipo_usuario FROM usuarios ORDER BY nome ASC";
+        const { rows } = await db.query(queryText);
+        res.status(200).json(rows);
+    } catch (error) {
+        console.error('Erro ao buscar usuários:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
+const getUsuarioById = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const { rows } = await db.query('SELECT codigo, nome, email, tipo_usuario, numero_oab FROM usuarios WHERE codigo = $1', [id]);
+        if (rows.length === 0) {
+            return res.status(404).json({ message: 'Usuário não encontrado.' });
+        }
+        res.status(200).json(rows[0]);
+    } catch (error) {
+        console.error('Erro ao buscar usuário por ID:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
+    }
+};
+
+
 const createUser = async (req, res) => {
-    // Pega a senha junto com os outros dados
+
     console.log("--- DADOS RECEBIDOS NO BACKEND --- \nCorpo da Requisição (req.body):", req.body);
     const { nome, email, senha, tipo_usuario, numero_oab } = req.body;
-    
     if (!nome || !email || !senha || !tipo_usuario) {
         return res.status(400).json({ message: 'Nome, email, senha e tipo de usuário são obrigatórios.' });
     }
@@ -15,10 +40,10 @@ const createUser = async (req, res) => {
     }
 
     try {
-        // "hasheia" a senha
+
         const hashedPassword = await bcrypt.hash(senha, 10);
 
-        // Salva a senha hasheada no banco
+
         const queryText = 'INSERT INTO usuarios (nome, email, senha, tipo_usuario, numero_oab ) VALUES ($1, $2, $3, $4, $5) RETURNING *';
         const values = [nome, email, hashedPassword, tipo_usuario, numero_oab]; // <-- Usando a senha hasheada
         
@@ -44,28 +69,28 @@ const getAdvogados = async (req, res) => {
     }
 };
 
-const updateUsuario = async (req, res) => {
+const updateSenhaUsuario = async (req, res) => {
     const { id } = req.params;
-    
-    const usuarioExiste = await db.oneOrNone("SELECT id FROM usuarios WHERE codigo = $1;", [id]);
-    if (!usuarioExiste) {
-        return res.status(404).send({ error: 'Usuário não encontrada.' });
+    const { senha } = req.body;
+
+    if (!senha || senha.length < 6) { // Exemplo de validação de senha
+        return res.status(400).json({ message: 'A nova senha é obrigatória e deve ter no mínimo 6 caracteres.' });
     }
-    
+
     try {
-        const { nome, email, senha, tipo_usuario, numero_oab } = req.body;
+        const hashedPassword = await bcrypt.hash(senha, 10);
+        const queryText = 'UPDATE usuarios SET senha = $1 WHERE codigo = $2';
+        const { rowCount } = await db.query(queryText, [hashedPassword, id]);
 
-        await db.none(
-        'UPDATE usuarios SET nome = $1, email = $2, senha = $3, tipo_usuario = $4, numero_oab = $5 WHERE codigo = $6;'
-        [nome, email, senha, tipo_usuario, numero_oab, id]
-        );
-
-        return res.status(200).send("Usuário atualizado com sucesso!");
-    } 
-    catch (err) {
-        return res.status(500).send({ error: 'Erro ao atualizar usuário.', details: err.message });
+        if (rowCount === 0) {
+            return res.status(404).json({ message: 'Usuário não encontrado para atualização.' });
+        }
+        res.status(200).json({ message: 'Senha atualizada com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao atualizar senha do usuário:', error);
+        res.status(500).json({ message: 'Erro interno do servidor.' });
     }
-}
+};
 
 const deleteUsuario = async (req, res) => {
     const {ids} = req.body;
@@ -82,10 +107,13 @@ const deleteUsuario = async (req, res) => {
 
         const result = await db.query(queryText, [idInt]);
     
-        // result.rowCount contém o número de linhas que foram deletadas
+
         res.status(200).json({ message: `${result.rowCount} usuário(s) excluído(s) com sucesso.` });
         } 
     catch (error) {
+        if (error.code === '23503') {
+            return res.status(409).json({ message: 'Não é possível excluir, o usuário pode estar vinculado a um processo' });
+        }
         console.error('Erro ao excluir usuário:', error);
         res.status(500).json({ message: 'Erro interno do servidor.' });
     }
@@ -94,6 +122,8 @@ const deleteUsuario = async (req, res) => {
 module.exports = {
     createUser,
     getAdvogados,
-    updateUsuario,
-    deleteUsuario
+    updateSenhaUsuario,
+    deleteUsuario,
+    getUsuarios,
+    getUsuarioById
 };

@@ -47,7 +47,7 @@
                             <div class="circulo w-3 h-3 lg:w-5 lg:h-5 rounded-full bg-[#fde047] border-4 border-[#fbbf24]"></div>
                             <span class="text-[15px] lg:text-lg">Em aberto</span>
                         </div> 
-                        <span class="lg:h-15 text-[25px] lg:text-[50px] font-bold flex justify-center mt-5">00</span>
+                        <span id="qtdAberto" class="lg:h-15 text-[25px] lg:text-[50px] font-bold flex justify-center mt-5"></span>
                     </div>
 
                 <div class="andamento lg:h-auto h-33 inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
@@ -55,7 +55,7 @@
                             <div class="circulo  w-3 h-3 lg:w-5 lg:h-5 rounded-full bg-[#1d4ed8] border-4 border-[#172554]"></div>
                             <span class="text-[15px] lg:text-lg">Em andamento</span>
                         </div> 
-                        <span class="text-[25px] lg:text-[50px] font-bold flex justify-center mt-5">00</span>
+                        <span id="qtdAndamento" class="text-[25px] lg:text-[50px] font-bold flex justify-center mt-5"></span>
                     </div>
 
                     <div class="concluido lg:h-auto h-33 inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
@@ -63,7 +63,7 @@
                             <div class="circulo  w-3 h-3 lg:w-5 lg:h-5 rounded-full bg-[#15803d] border-4 border-[#14532d]"></div>
                             <span class="text-[15px] lg:text-lg">Concluído</span>
                         </div> 
-                        <span class="text-[25px] lg:text-[50px] font-bold flex justify-center mt-5">00</span>
+                        <span id="qtdConcluido" class="text-[25px] lg:text-[50px] font-bold flex justify-center mt-5"></span>
                     </div>
 
                     <div class="cancelado lg:h-auto h-33 inline-flex flex-col gap-1 m-4 rounded-lg bg-[#18181b]">
@@ -71,7 +71,7 @@
                             <div class="circulo  w-3 h-3 lg:w-5 lg:h-5 rounded-full bg-[#b91c1c] border-4 border-[#7f1d1d]"></div>
                             <span class="text-[15px] lg:text-lg">Cancelado</span>
                         </div> 
-                        <span class="text-[25px] lg:text-[50px] font-bold flex justify-center mt-5">00</span>
+                        <span id="qtdCancelado" class="text-[25px] lg:text-[50px] font-bold flex justify-center mt-5"></span>
                     </div>
                     
                 </div>
@@ -86,41 +86,12 @@
                     </span>
                     <div class="grid gap-3 w-full grid-rows-[1fr_fr]">
                         <div class="bg-[#18181b] h-[16rem] rounded-lg ">
-                            <span class="flex justify-center mt-10 text-[90px] text-red-500 font-bold">0</span>
+                            <span id="qtdTarefa" class="flex justify-center mt-10 text-[90px] text-red-500 font-bold"></span>
                             <span class="text-white flex justify-center font-bold text-[40px]">Tarefas Hoje</span>
                         </div>
                         <div class="bg-[#18181b] rounded-lg h-[16rem]">
                             <div id="tarefas" class="p-3">
-                                <div class="py-2 inline-flex items-center gap-3">
-                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
-                                    <span class="font-bold">00:00</span>
-                                    <span class="">Tarefa Exemplo</span>
-                                </div>
-                                <div class="py-2 inline-flex items-center gap-3">
-                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
-                                    <span class="font-bold">00:00</span>
-                                    <span class="">Tarefa Exemplo</span>
-                                </div>
-                                <div class="py-2 inline-flex items-center gap-3">
-                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
-                                    <span class="font-bold">00:00</span>
-                                    <span class="">Tarefa Exemplo</span>
-                                </div>
-                                <div class="py-2 inline-flex items-center gap-3">
-                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
-                                    <span class="font-bold">00:00</span>
-                                    <span class="">Tarefa Exemplo</span>
-                                </div>
-                                <div class="py-2 inline-flex items-center gap-3">
-                                    <ion-icon class="text-red-500" name="chevron-forward-outline"></ion-icon>
-                                    <span class="font-bold">00:00</span>
-                                    <span class="">Tarefa Exemplo</span>
-                                </div>
-                                
                             </div>
-                            
-                            
-                            
                         </div>
                     </div>
                 </div>
@@ -166,7 +137,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="home.js"></script>
-    <script src="../sidebar/sidebarLoader.js"></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

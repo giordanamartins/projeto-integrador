@@ -5,7 +5,7 @@ const db = require('./db');
 function auth(passport) {
     const autenticarUser = async (email, senha, done) => {
         try {
-            // CORREÇÃO FINAL: A query agora busca na coluna 'email', como no seu banco.
+
             const result = await db.query('SELECT * FROM usuarios WHERE email = $1', [email]);
             const user = result.rows[0];
 
@@ -27,7 +27,7 @@ function auth(passport) {
 
     passport.use(new LocalStrategy({ usernameField: 'email', passwordField: 'senha' }, autenticarUser));
 
-    // Usando a chave primária correta 'codigo'
+
     passport.serializeUser((user, done) => done(null, user.codigo));
 
     passport.deserializeUser(async (id, done) => {

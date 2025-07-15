@@ -9,7 +9,9 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <title>Agenda</title>
+     <script src="tarefas.js" defer></script>
 </head>
+
 <body class="font-[inter] bg-[#222222] ">
     <div id="sidebar-placeholder">
     </div>
@@ -24,16 +26,6 @@
             <div  class="flex justify-center mt-2.5">
                 <button id="bt_del" class="flex items-center bg-[#942023] px-16 py-3   rounded-full text-[19px] text-white font-bold">
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon> Excluir
-                </button>
-            </div>
-            <div  class="flex justify-center mt-2.5">
-                <button id="bt_ok" class="flex items-center bg-[#15803d] px-15 py-3 rounded-full text-[19px] text-white font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
-                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
-                </button>
-            </div>
-            <div  class="flex justify-center mt-2.5">
-                <button id="bt_reopen" class="flex items-center px-16 py-3 bg-[#facc15] text-black rounded-full text-[19px] font-bold transition-opacity duration-300 opacity-50 cursor-not-allowed" disabled>
-                    <ion-icon class="mr-2" name="arrow-up-circle-outline"></ion-icon> Reabrir
                 </button>
             </div>
         </div>
@@ -55,18 +47,15 @@
             <div class="w=64 flex-auto"></div>
            
         </div>
-        <div class="searchbar bg-[#fffff] mx-20 mt-7 mb-6 bg-white rounded-lg flex items-center w-180">
-            <ion-icon name="search-outline" class="px-3"></ion-icon>
-            <input type="text" class="w-full">
-        </div>
+        
 
-        <div id="tabelaCPagar" class="row"></div>
+        <div id="tabelaTarefas" class="row"></div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="tarefas.js"></script>
-     <script src="../sidebar/sidebarLoader.js"></script>
+   
+     <script src="/sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

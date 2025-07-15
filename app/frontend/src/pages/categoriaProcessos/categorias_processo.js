@@ -1,7 +1,7 @@
 let idsSelecionados = [];
 const apiUrl = '/api/catProcessos';
 
-// Função principal que é chamada quando a página carrega
+
 document.addEventListener('DOMContentLoaded', () => {
     carregaCatProc();
     setupEventListenersGlobais(); // Configura os eventos que só precisam ser adicionados uma vez
@@ -61,7 +61,7 @@ const carregaCatProc = async (termoBusca = '') => {
         resultsTableHTML += `</tbody></table>`;
         containerTabela.innerHTML = resultsTableHTML;
 
-        // Reconfigura os eventos para os novos elementos da tabela
+
         setupEventListenersTabela();
         updateSelecionados(); // Garante que os botões comecem no estado correto
 
@@ -76,7 +76,7 @@ const carregaCatProc = async (termoBusca = '') => {
  * como a barra de pesquisa e os botões de ação.
  */
 function setupEventListenersGlobais() {
-    // Lógica da barra de pesquisa
+
     const searchInput = document.getElementById('search');
     let debounceTimer;
     if (searchInput) {
@@ -89,7 +89,7 @@ function setupEventListenersGlobais() {
         });
     }
 
-    // Lógica do botão de exclusão
+
     const excluirBtn = document.getElementById('bt_excluir');
     if (excluirBtn) {
         excluirBtn.addEventListener('click', async () => {
@@ -108,7 +108,7 @@ function setupEventListenersGlobais() {
         });
     }
     
-    // Lógica para o botão de clonar
+
     const clonarBtn = document.getElementById('bt_clonar');
     if (clonarBtn) {
         clonarBtn.addEventListener('click', async () => {
@@ -133,7 +133,7 @@ function setupEventListenersGlobais() {
         });
     }
 
-    // Lógica do menu financeiro
+
     const financeiroToggle = document.getElementById('financeiro-toggle');
     const financeiroSubmenu = document.getElementById('financeiro-submenu');
     const financeiroArrow = document.getElementById('financeiro-arrow');

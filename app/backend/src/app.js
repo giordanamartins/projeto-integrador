@@ -10,7 +10,7 @@ const db = require('./config/db');
 const initializePassport = require('./config/passport-cfg');
 initializePassport(passport);
 
-// O require das rotas vem primeiro
+// require das rotas
 const catDespesaRoutes = require('./routes/catDespesaRoutes');
 const catProcessosRoutes = require('./routes/catProcessosRoutes');
 const clienteRoutes = require('./routes/clienteRoutes');
@@ -82,6 +82,7 @@ app.use('/api/contasReceber', isAuthenticated, creceberRoutes);
 app.use('/api/processos', isAuthenticated, processosRoutes);
 app.use('/api/tarefas', isAuthenticated, tarefasRoutes);
 app.use('/api/usuarios', isAuthenticated, usuarioRoutes);
+app.use('/api/modelos', isAuthenticated, modelosRoutes);
 
 
 // Iniciar o servidor
@@ -89,3 +90,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor está rodando na porta ${PORT}.`);
 });
+//

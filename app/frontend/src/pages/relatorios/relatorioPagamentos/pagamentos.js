@@ -3,18 +3,6 @@ const apiUrl = '/api/contasPagar/relatorio-pagamentos';
 document.addEventListener('DOMContentLoaded', () => {
     carregarTabela();
 
-    const search = document.getElementById('searchInput');
-    let timeoutBusca;
-
-    search.addEventListener('input', (event) => {
-        clearTimeout(timeoutBusca);
-        const termo = event.target.value;
-
-        timeoutBusca = setTimeout(() => {
-            carregarTabela(termo);
-        }, 300);
-    });
-
     document.getElementById("dataRelatorio").innerText =
         `Gerado em: ${new Date().toLocaleString('pt-BR')}`;
 });
@@ -26,6 +14,7 @@ const carregarTabela = async (termoBusca = '') => {
     try {
         const response = await axios.get(apiUrl);
         let pagamentos = response.data;
+        console.log(pagamentos);
 
         if (termoBusca) {
             const termoLower = termoBusca.toLowerCase();

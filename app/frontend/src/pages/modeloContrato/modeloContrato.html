@@ -36,14 +36,17 @@
         <aside class="w-full lg:w-64 bg-[#3f3f46] rounded-xl shadow-md p-4 h-fit">
         <div class="space-y-4">
             <div id="bt_add" class="flex justify-center">
-            <button id="btn-incluir"
+                <a href="index.html">
+                <button id="btn-incluir"
                 class="w-full py-3 bg-[#2563eb] rounded-full text-[17px] font-bold text-white hover:bg-blue-600 transition">
                 + Incluir Modelo
             </button>
+                </a>
+                
             </div>
 
             <div id="bt_del" class="flex justify-center">
-            <button id="btn-excluir"
+            <button id="bt_excluir"
                 class="w-full flex items-center justify-center gap-2 bg-[#942023] py-3 rounded-full text-[17px] font-bold text-white hover:bg-red-700 transition">
                 <ion-icon class="text-lg" name="trash-outline"></ion-icon> Excluir
             </button>
@@ -60,7 +63,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="modeloContrato.js"></script>
-    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         loadSidebar();

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -17,8 +17,8 @@
 
     <div id="sidebar-placeholder" class="hidden lg:block fixed top-0 left-0 h-full w-64 z-40"></div>
 
-    <div class="content ml-0 lg:ml-84 min-h-screen p-10">
-        <header class="flex justify-between items-start mb-10">
+    <div class="content ml-64 p-10">
+        <header class="flex justify-between items-start mb-6">
             <div>
                 <h1 class="text-4xl font-bold">Relatório: Contas a Receber</h1>
                 <p class="text-gray-400 text-sm mt-1" id="dataRelatorio"></p>
@@ -28,12 +28,13 @@
                 <i class="ri-printer-line mr-2"></i> Imprimir
             </button>
         </header>
+
         <div id="tabelaCReceber" class="overflow-x-auto bg-[#2e2e2e] rounded-lg shadow-lg"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="/app/frontend/src/pages/relatorios/relatorioAReceber/areceber.js"></script>
-    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
+    <script src="aReceber.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadSidebar();

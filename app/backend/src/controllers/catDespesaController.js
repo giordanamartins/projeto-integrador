@@ -3,19 +3,19 @@ const db = require('../config/db');
 const getCatDespesa = async (req, res) => {
     const { busca } = req.query;
     try {
-        // CORREÇÃO 1: Usando 'let' para permitir que a variável seja modificada.
+
         let query_CatDespesa = 'SELECT * FROM categorias_despesa';
         const values = [];
 
         if (busca) {
-            // CORREÇÃO 2: Usando '+=' para concatenar a string.
+
             query_CatDespesa += ' WHERE descricao ILIKE $1';
             values.push(`%${busca}%`);
         }
         
         query_CatDespesa += ' ORDER BY codigo ASC;';
 
-        // CORREÇÃO 3: Passando o array 'values' para a consulta.
+
         const { rows } = await db.query(query_CatDespesa, values);
         
         res.status(200).json(rows);

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+    <title>Criar Usuário</title>
+</head>
+
+<body class="font-[inter] bg-[#222222] text-white p-6">
+    <div id="sidebar-placeholder"></div>
+
+    <div class="ml-64 p-6">
+        <form id="form-editar-senha" class="bg-[#3f3f46] text-white p-6 rounded-xl shadow-lg max-w-6xl mx-auto space-y-6">
+        <h1 class="text-2xl font-bold mb-4">Cadastro de Usuário</h1>
+
+        <div class="space-y-4">
+            <div class="flex flex-wrap gap-4">
+            <div class="flex flex-col w-full md:w-1/2">
+                <label for="nome" class="mb-1">Nome e e-mail</label>
+                <input type="text" id="nome" required class="p-2 rounded bg-[#222222] text-white" />
+            </div>
+
+
+            <div class="flex flex-col w-full md:w-1/2">
+                <label for="senha" class="mb-1">Senha*</label>
+                <input type="password" id="senha" required class="p-2 rounded bg-[#222222] text-white" />
+            </div>
+
+
+            </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+            <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
+            <button type="button" class="border px-6 py-2 rounded text-white hover:bg-[#222222]"onclick="history.back()">Cancelar</button>
+        </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="editar.js" defer></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadSidebar();
+        });
+    </script>
+</body>
+</html>

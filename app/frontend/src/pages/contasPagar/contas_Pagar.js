@@ -1,8 +1,8 @@
-// Array para guardar os IDs das contas selecionadas
+
 let idsSelecionados = [];
 const apiUrl = '/api/contasPagar';
 
-// Função principal que é chamada quando a página carrega
+
 document.addEventListener('DOMContentLoaded', () => {
     carregaCPagar();
     setupEventListenersGlobais(); // Configura os eventos que só precisam ser adicionados uma vez

@@ -19,7 +19,7 @@
     <div id="sidebar-placeholder" class="hidden lg:block fixed top-0 left-0 h-full w-64 z-40"></div>
 
     <div class="ml-0 lg:ml-64 p-6">
-        <form class="bg-[#3f3f46] p-6 rounded-xl shadow-lg max-w-5xl mx-auto space-y-6">
+        <form id="form-modelo-contrato" class="bg-[#3f3f46] p-6 rounded-xl shadow-lg max-w-5xl mx-auto space-y-6">
             <h1 class="text-2xl font-bold mb-4">Cadastro de Modelo de Contrato</h1>
 
             <div class="flex flex-col">
@@ -48,6 +48,24 @@
                 <p class="text-sm text-gray-300 mt-1">A variável será inserida no ponto atual do texto.</p>
             </div>
 
+
+    <div class="flex flex-wrap gap-4">
+        <button
+            type="submit"
+            class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700"
+        >
+            Salvar
+        </button>
+        <button
+            type="button"
+            class="border border-white px-6 py-2 rounded text-white hover:bg-[#222222]"
+            onclick="history.back()"
+        >
+            Cancelar
+        </button>
+    </div>
+    </form>
+</div>
             <div class="flex flex-wrap gap-4">
                 <button type="submit" class="bg-red-800 px-6 py-2 rounded text-white hover:bg-red-700">Salvar</button>
                 <button type="button" class="border border-white px-6 py-2 rounded text-white hover:bg-[#222222]">Cancelar</button>
@@ -55,9 +73,9 @@
         </form>
     </div>
 
-<script src="/app/frontend/src/pages/modeloContrato/modeloContrato.js"></script>
+<script src="novoModelo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+<script src="/sidebar/sidebarLoader.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         loadSidebar();

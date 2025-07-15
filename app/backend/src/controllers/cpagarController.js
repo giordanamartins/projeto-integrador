@@ -17,15 +17,19 @@ const getContasPagar = async (req, res) => {
         console.error('Erro ao buscar contas a pagar no banco de dados:', error);
         res.status(500).json({ message: "Erro interno do servidor." });
     }
-    };
+};
 
-    const getContasPagarHoje = async (req, res) => {
+const getContasPagarHoje = async (req, res) => {
     try{
-        const query_cpagar = 'SELECT cp.valor, cp.data_vencimento, cp.status, cp.descricao, cd.descricao FROM a_pagar cp JOIN categorias_despesa cd on cp.categoria_codigo = cd.codigo WHERE data_vencimento = CURRENT_DATE ORDER BY cp.data_vencimento ASC;';
+
+        const query_cpagar = `
+            SELECT valor 
+            FROM a_pagar 
+            WHERE data_vencimento = CURRENT_DATE;
+        `;
         const { rows } = await db.query(query_cpagar);
         res.status(200).json(rows);
-    }
-    catch (error) {
+    } catch (error) {
         console.error('Erro ao buscar contas a pagar do dia:', error);
         res.status(500).json({ message: "Erro interno do servidor." });
     }
@@ -55,7 +59,7 @@ const createContasPagar = async (req, res) => {
 const updateContasPagar = async (req, res) => {
     const { id } = req.params;
 
-const { valor, data_vencimento, status, descricao, categoria_codigo } = req.body;
+    const { valor, data_vencimento, status, descricao, categoria_codigo } = req.body;
 
     if (!valor || !data_vencimento || !categoria_codigo || !status) {
         return res.status(400).json({ message: 'Todos os campos são obrigatórios para atualização.' });
@@ -99,7 +103,6 @@ const deleteContasPagar = async (req, res) => {
             if (result.rowCount === 0) {
                 return res.status(400).json({ message: 'Contas pagas não podem ser excluídas.' });
             }
-            res.status(200).json({ message: `${result.rowCount} conta(s) excluída(s) com sucesso.` });
             
             res.status(200).json({ message: `${result.rowCount} conta(s) excluída(s) com sucesso.` });
             } 
@@ -107,7 +110,7 @@ const deleteContasPagar = async (req, res) => {
                 console.error('Erro ao excluir conta:', error);
                 res.status(500).json({ message: 'Erro interno do servidor.' });
             }
-}
+};
 
 const updateStatus = async (req, res) => {
     const { ids, status } = req.body;
@@ -136,7 +139,11 @@ const updateStatus = async (req, res) => {
 
 const relatorioContasAPagar = async (req, res) => {
     try {
-        const query = "'SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao, a.valor FROM a_pagar a JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo WHERE a.status = 'A' ORDER BY a.data_vencimento;";
+        const query = `SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao AS categoria_descricao, a.valor 
+               FROM a_pagar a 
+               JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo 
+               WHERE a.status = 'A' 
+               ORDER BY a.data_vencimento;`;
         const { rows } = await db.query(query);
         res.status(200).json(rows);
     } 
@@ -148,7 +155,11 @@ const relatorioContasAPagar = async (req, res) => {
 
 const relatorioPagamentos = async (req, res) => {
     try {
-        const query = "SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao, a.valor FROM a_pagar a JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo WHERE a.status = 'P' ORDER BY a.data_vencimento;";
+        const query = `SELECT a.codigo, a.descricao, a.data_vencimento, cd.descricao AS categoria_descricao, a.valor 
+               FROM a_pagar a 
+               JOIN categorias_despesa cd ON a.categoria_codigo = cd.codigo 
+               WHERE a.status = 'B' 
+               ORDER BY a.data_vencimento;`;
         const { rows } = await db.query(query);
         res.status(200).json(rows);
     } 

@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
         const response = await axios.get(apiUrl);
         const contas = response.data;
+        console.log(contas);
 
         qtdReg.innerHTML = `<strong>${contas.length}</strong>`;
 

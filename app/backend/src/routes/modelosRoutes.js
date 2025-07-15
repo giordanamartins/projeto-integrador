@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-// O require do controller vem primeiro
-const modelosController = require('../controllers/modelosController');
 
-// A rota usa a função importada
+const modelosController = require('../controllers/modelosController');
+const processosController = require('../controllers/processosController');
+
+
 router.get('/', modelosController.getModelosContratos);
+
+router.get('/:id/contrato', processosController.gerarContratoTexto);
 
 router.post('/', modelosController.createModeloContrato);
 
@@ -13,5 +16,5 @@ router.put('/:id' , modelosController.updateModeloContrato);
 
 router.delete('/' , modelosController.deleteModelosContratos);
 
-// Certifique-se que esta é a única linha de exportação no arquivo
+
 module.exports = router;

@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <title>Contas a Receber</title>
+    <title>Contas a Pagar</title>
 </head>
 <body class="font-[inter] bg-[#222222] text-white min-h-screen lg:pl-64">
 
@@ -44,11 +44,10 @@
                 <button class="w-full flex items-center justify-center bg-[#942023] py-3 rounded-full text-[17px] font-bold text-white hover:bg-red-700 transition">
                     <ion-icon class="mr-2" name="trash-outline"></ion-icon>Excluir
                 </button>
-                </div>
-
-                <div id="bt_ok" class="flex justify-center">
-                <button class="w-full flex items-center justify-center bg-[#15803d] py-3 rounded-full text-[17px] font-bold text-white hover:bg-green-700 transition">
-                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon>Concluir
+            </div>
+            <div id="bt_ok" class="flex justify-center mt-2.5">
+                <button class="flex items-center px-13 py-3 bg-[#15803d]  rounded-full text-[19px] text-white font-bold">
+                    <ion-icon class="mr-2" name="checkmark-circle-outline"></ion-icon> Concluir
                 </button>
                 </div>
 
@@ -68,7 +67,7 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="contas_Receber.js"></script>
-    <script src="/app/frontend/src/pages/sidebar/sidebarLoader.js"></script>
+    <script src="/sidebar/sidebarLoader.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
         loadSidebar();
