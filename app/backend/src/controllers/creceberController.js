@@ -33,7 +33,6 @@ const getContasReceber = async (req, res) => {
 
 const getContasReceberHoje = async (req, res) => {
     try {
-        // CORREÇÃO: Selecionando a coluna correta 'valor' da tabela 'a_receber'
         const query_creceber = `
             SELECT valor 
             FROM a_receber 

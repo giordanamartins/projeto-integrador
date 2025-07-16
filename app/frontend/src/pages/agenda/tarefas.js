@@ -1,7 +1,7 @@
 let idsSelecionados = [];
 const apiUrl = '/api/tarefas';
 
-// Função principal que é chamada quando a página carrega
+
 document.addEventListener('DOMContentLoaded', () => {
     carregaTarefas();
     setupEventListenersGlobais();
@@ -66,7 +66,7 @@ const carregaTarefas = async () => {
 };
 
 function setupEventListenersGlobais() {
-    const excluirBtn = document.getElementById('bt_del'); // Use o ID do seu botão de excluir
+    const excluirBtn = document.getElementById('bt_del'); 
     if (excluirBtn) {
         excluirBtn.addEventListener('click', async () => {
             if (idsSelecionados.length === 0) return;
@@ -113,7 +113,7 @@ function setupEventListenersTabela() {
 
 function updateSelecionados() {
     idsSelecionados = Array.from(document.querySelectorAll('.checkbox-tarefa:checked')).map(cb => cb.dataset.id);
-    const excluirBtn = document.getElementById('bt_del'); // Use o ID do seu botão
+    const excluirBtn = document.getElementById('bt_del'); 
     if (excluirBtn) {
         excluirBtn.disabled = idsSelecionados.length === 0;
         excluirBtn.classList.toggle('opacity-50', excluirBtn.disabled);

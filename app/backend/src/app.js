@@ -40,6 +40,25 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+const primeiroUsuario = async (req, res, next) => {
+    try {
+        const userCheck = await db.query('SELECT COUNT(*) AS user_count FROM usuarios');
+        const userCount = parseInt(userCheck.rows[0].user_count, 10);
+
+        if (userCount === 0 && req.method === 'POST' && req.path === '/') {
+            return next();
+        }
+        
+        return isAuthenticated(req, res, next);
+
+    } catch (error) {
+        console.error("Erro ao verificar primeiro usuário:", error);
+        return res.status(500).json({ message: "Erro interno do servidor." });
+    }
+};
+
+
 app.get('/', async (req, res) => {
   try {
     const userCheck = await db.query('SELECT COUNT(*) AS user_count FROM usuarios');
@@ -68,6 +87,8 @@ app.get('/home/index.html', isAuthenticated, (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+
+app.use('/api/usuarios', primeiroUsuario, usuarioRoutes);
 
 // Servir arquivos estáticos
 app.use(express.static(path.join(__dirname, '..', '..', 'frontend', 'src', 'pages')));

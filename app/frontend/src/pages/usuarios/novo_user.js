@@ -33,9 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             const response = await axios.post('/api/usuarios', novoUsuario);
-            alert(response.data.message);
+            alert(response.data.message + "\n\nVocê será redirecionado para a tela de login.");
+
             form.reset();
-            window.location.href = 'usuarios.html';
+            window.location.href = '/login/index.html';
             campoOAB.style.display = 'none'; // Esconde o campo OAB após o reset
         } catch (error) {
 

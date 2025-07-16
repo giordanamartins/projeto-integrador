@@ -291,9 +291,9 @@ const getProcessosStCount = async (req, res) => {
 
         const counts = {
             A: 0,
-            D: 0, // Em Aberto/Andamento
-            X: 0, // Concluído (Exemplo)
-            C: 0  // Cancelado (Exemplo)
+            D: 0,
+            X: 0,
+            C: 0 
         };
 
         rows.forEach(row => {

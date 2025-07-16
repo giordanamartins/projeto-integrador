@@ -68,7 +68,7 @@ const createClientes = async (req, res) => {
     }
 }
 
-// --- FUNÇÃO DE UPDATE CORRIGIDA ---
+
 const updateClientes = async (req, res) => {
     const { id } = req.params;
     const dadosCliente = req.body;
