@@ -68,6 +68,13 @@ const lancarParcelas = async (req, res) => {
         const valorParcela = parseFloat(valor_total) / parseInt(numero_parcelas, 10);
         const dataInicial = new Date(data_primeiro_vencimento);
 
+        let recorrencia = null;
+        if (periodicidade === 'mensal') {
+            recorrencia = 'M';
+        } else if (periodicidade === 'unica') {
+            recorrencia = 'U';
+        }
+
         for (let i = 0; i < numero_parcelas; i++) {
             let dataVencimento = new Date(dataInicial);
             if (periodicidade === 'mensal') {
@@ -80,7 +87,7 @@ const lancarParcelas = async (req, res) => {
                 descricao: `${descricao_base} - Parcela ${i + 1}/${numero_parcelas}`,
                 processo_codigo: parseInt(processo_codigo, 10),
                 cliente_codigo: cliente_codigo,
-                recorrencia: periodicidade
+                recorrencia: recorrencia
             });
         }
         
